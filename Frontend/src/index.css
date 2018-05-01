@@ -12,7 +12,7 @@ ul.header li {
 }
 
 ul.header {
-  background-color: #0000A0;
+  background-color: gray;
   padding: 0;
 }
 
@@ -39,7 +39,7 @@ ul.header li a {
 }
 
 .active {
-  background-color: steelblue;
+  background-color: lightgrey;
 }
 
 .activeV2 {

@@ -43,7 +43,9 @@ export default class FetchExample extends React.Component {
           data={this.state.dataSource}
           renderItem={({item}) => <Text>{item.name}, {item.gender}</Text>}
           keyExtractor={(item, index) => index}
-        />  <Image source={require('./Luke_Skywalker.png')} style={height = undefined } />
+
+        />  <Image source={require('./Luke_Skywalker.png')}  />
+
       </View>
     );
   }
