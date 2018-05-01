@@ -3,4 +3,3 @@ jdk: oraclejdk8
 before_script:
 - cd jwtBackend
 
-
