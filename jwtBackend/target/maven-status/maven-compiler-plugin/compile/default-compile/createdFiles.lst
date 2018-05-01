@@ -15,6 +15,7 @@ cors\CorsRequestFilter.class
 entity\Role_.class
 entity\User.class
 cors\CorsResponseFilter.class
+entity\StatisticsFacade.class
 security\ErrorEndpoint.class
 rest\ApplicationConfig.class
 exceptions\Error.class
