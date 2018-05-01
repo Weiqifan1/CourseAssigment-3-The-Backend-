@@ -1,4 +1,4 @@
 language: java
 jdk: oraclejdk8
-before install: cd jwtBackend
+before install: cd .jwtBackend
 
