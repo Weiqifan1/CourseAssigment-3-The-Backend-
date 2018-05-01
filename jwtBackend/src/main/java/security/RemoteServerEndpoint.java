@@ -120,5 +120,5 @@ public class RemoteServerEndpoint {
         System.out.println("swapi test");
        // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
         System.out.println(getValueFromServer("https://swapi.co/api/people/?page=2"));
-     System.out.println(getRemoteData4SquareByLokation("roskilde"));
+     System.out.println(getRemoteData4SquareByLokation("koge"));
 }}
