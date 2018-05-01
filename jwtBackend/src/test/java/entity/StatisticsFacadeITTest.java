@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Ejer
  */
-public class StatisticsFacadeIT {
+public class StatisticsFacadeITTest {
     
-    public StatisticsFacadeIT() {
+    public StatisticsFacadeITTest() {
     }
     
     @BeforeClass
