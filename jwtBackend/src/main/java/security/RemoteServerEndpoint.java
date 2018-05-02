@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -25,7 +26,7 @@ import javax.ws.rs.core.Response;
  *
  * @author Ejer
  */
-@Path("remote")
+@Path("restaurants")
 
 public class RemoteServerEndpoint {
     
@@ -59,18 +60,29 @@ public class RemoteServerEndpoint {
 //        return output;
 //    }
 //
-//      @GET
-//         @Path("/vehicles")
+//      @POST
+//         @Path("/{lokation}")
+//    @Consumes(MediaType.APPLICATION_JSON)
 //    @Produces(MediaType.APPLICATION_JSON)
-//    public String getVehicles() throws IOException {
-//        String output = getRemoteData4SquareByLL("https://swapi.co/api/vehicles");
+//    public String getVehicles(@PathParam("lokation") String lokation) throws IOException {
+//        String output = getRemoteData4SquareByLokation(lokation);
 //        return output;
 //    }
+       @GET
+         @Path("/{lokation}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getVehicles(@PathParam("lokation") String lokation) throws IOException {
+        String output = getRemoteData4SquareByLokation(lokation);
+        return output;
+    }
    
    
+   //hvis man vil lave en query på bestemt slags mad &query="sushi"
     public static String getRemoteData4SquareByLokation(String lokation ) throws MalformedURLException, IOException{
    
-       String urlInput="https://api.foursquare.com/v2/venues/explore?near="+lokation+"&section='food'&client_id=KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES&client_secret=2EPVZLOWM51X51JJU5YXQOH2YHBRM5EZJRAZWMB2VBMDSABK&v=20180501";
+       String urlInput="https://api.foursquare.com/v2/venues/explore?near="+lokation
+               +"&section='food'&client_id=KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES&client_secret=2EPVZLOWM51X51JJU5YXQOH2YHBRM5EZJRAZWMB2VBMDSABK&v=20180418";
         URL url = new URL(urlInput);//new URL("https://swapi.co/api/people/"+id);
     HttpURLConnection con = (HttpURLConnection) url.openConnection();
     con.setRequestMethod("GET");
