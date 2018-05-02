@@ -6,12 +6,13 @@ import RestaurantsSearchResult from './RestaurantsSearchResult'
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = { lokation: "", restaurants: "" }
+        this.state = { lokation: "", restaurants: "", boo:false }
     }
   
 
     onSearch = (evt) => {
-        evt.preventDefault(); console.log(this.state.lokation)
+        evt.preventDefault(); 
+       this.setState({boo:true})
        
        
     }
@@ -34,7 +35,7 @@ class Search extends Component {
 
                     <div className="container">
                         <CheckboxForFoodTypes id="3" />
-                    
+       
                         
                     </div>
                 </form>
