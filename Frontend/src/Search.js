@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes'
 import UserSearchResult from './UserSearchResult';
-import RestaurantsSearchResult from './RestaurantsSearchResult'
+//import RestaurantsSearchResult from './RestaurantsSearchResult'
+import fourfacade from './FoursquareFacade'
 
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = { lokation: "", restaurants: "", boo:false }
+        this.state = { location: "", restaurants: "", boo:false }
     }
   
 
-    onSearch = (evt) => {
-        evt.preventDefault(); 
-       this.setState({boo:true})
-       
-       
-    }
+  
     onChange = (evt) => {
         console.log(evt.target.value)
         this.setState({ [evt.target.id]: evt.target.value })
        
     }
 
-
+    onSearch = (evt) => {
+        evt.preventDefault(); 
+       
+        fourfacade.fetchData(this.state.location)
+      
+       
+       
+    }
     render() {
         return (
             <div>
 
                 <form onSubmit={this.onSearch} onChange={this.onChange} >
                     <div id="search">
-                        <input placeholder="Location" id="lokation" />
+                        <input placeholder="Location" id="location" />
                         <button id="8">search</button>
                     </div>
 
@@ -39,7 +42,7 @@ class Search extends Component {
                         
                     </div>
                 </form>
-<RestaurantsSearchResult />
+{fourfacade.renderRestaurants()}
 
             </div>
         )

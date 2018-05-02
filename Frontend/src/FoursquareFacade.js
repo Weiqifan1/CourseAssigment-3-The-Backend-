@@ -3,38 +3,28 @@ import Logo_black from './images/Logo_black.jpg'
 import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png'
 
 
+
+const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/";
+
+
 function handleHttpErrors(res) {
     if (!res.ok) {
         throw { message: res.statusText, status: res.status };
     }
- 
+  
     return res.json();
-    console.log("Lad os se her : "+res.json)
 }
-const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/";
 
+class FoursquareFacade  {
 
-class RestaurantsSearchResult extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { restaurants: "", arr:[], lokation: this.props.lokation}
-console.log("lokation" +this.state.lokation)
-    }
-
-    componentDidMount() {
+   
         //TODO: At some point we will use fetch to get data from our rest endpoints but not made yet. 
-    fetch(URL+"koge")
-              .then(results => {
-                  if(results==null){
-                      return ""; 
-                  }
-               else{
-                return results.json();
-                
-              }}).then(data => {
-console.log(data.response)
-        const restaurants =data.response.groups[0].items.map((restaurant) => {
+ fetchData = (location) => {
+         
+            fetch(URL+location).then(handleHttpErrors)
+          .then(data => {
+console.log("arDAta"+data)
+       const getRestaurants =data.response.groups[0].items.map((restaurant) => {
 
             return (
 
@@ -48,11 +38,11 @@ console.log(data.response)
                 </tr>
             )
         })
-        this.setState({ restaurants: restaurants });
+      
 
     })}
 
-    render() {
+   renderRestaurants(){
 
 
         return (
@@ -67,7 +57,7 @@ console.log(data.response)
                     </thead>
 
                     <tbody>
-                        {this.state.restaurants}
+                        {this.getRestaurants}
                     </tbody>
 
                 </table>
@@ -79,4 +69,6 @@ console.log(data.response)
 
 }
 
-export default RestaurantsSearchResult;
+    const fourfacade = new FoursquareFacade();
+
+    export default fourfacade;
