@@ -28,7 +28,7 @@ import javax.ws.rs.core.Response;
 @Path("remote")
 
 public class RemoteServerEndpoint {
-    
+
     /*
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -40,10 +40,8 @@ public class RemoteServerEndpoint {
         }
         return gson.toJson(messages);
     }
-    */
+     */
     //nedenstående kunne være blevet gjort med et array af endpoints og en enkelt metode men ...
-    
-    
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
 //    public String getData() throws IOException {
@@ -66,56 +64,82 @@ public class RemoteServerEndpoint {
 //        String output = getRemoteData4SquareByLL("https://swapi.co/api/vehicles");
 //        return output;
 //    }
-   
-        private static final String client_id = "KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES";
+    //Foursquare
+    private static final String client_id = "KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES";
     private static final String client_secret = "2EPVZLOWM51X51JJU5YXQOH2YHBRM5EZJRAZWMB2VBMDSABK&v=20180501";
-    private static final String clientAut = "&client_id="+client_id+"&client_secret="+client_secret;
+    private static final String clientAut = "&client_id=" + client_id + "&client_secret=" + client_secret;
     private static final String FSVenURL = "https://api.foursquare.com/v2/venues/";
     //String urlInput="https://api.foursquare.com/v2/venues/explore?near="+lokation+"&section='food'&client_id=KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES&client_secret=2EPVZLOWM51X51JJU5YXQOH2YHBRM5EZJRAZWMB2VBMDSABK&v=20180501";
-       
+
+    //Goggle API
+    private static final String api = "AIzaSyAFoJXiVC6uuWxVsFgySAiYg2kxI7vyPUk";
+    private static final String goggleApiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
+    private static final String goggleApiKey = "&key=AIzaSyAFoJXiVC6uuWxVsFgySAiYg2kxI7vyPUk";
+    
+    public static String getLocationByTextSearchGoggle(String location) throws IOException {
+        String urlInput = goggleApiUrl + location + goggleApiKey;
+        System.out.println(urlInput);
+        return jsonResponseGoogle(urlInput);
+    
+    }
     
     //documentation: https://developer.foursquare.com/docs/api/venues/explore
     // returns a list of recommended venues near the current location.
-    public static String get4SquareByLocation(String location ) throws MalformedURLException, IOException{
-       String urlInput= FSVenURL + "explore" + "?near="+ location+ "&section='food'"+ clientAut;
-       return jsonResponse(urlInput);
-  }
-    
+    public static String get4SquareByLocation(String location) throws MalformedURLException, IOException {
+        String urlInput = FSVenURL + "explore" + "?near=" + location + "&section='food'" + clientAut;
+        return jsonResponse(urlInput);
+    }
+
     //documentation: https://developer.foursquare.com/docs/api/venues/explore
     // returns a list of recommended venues near the current location.
-    public static String get4SquareByLocation(String location, int radiusMeter ) throws MalformedURLException, IOException{
-       String urlInput= FSVenURL + "explore" + "?near="+ location
-               + "&radius="+radiusMeter+
-               "&section='food'"+ clientAut;
-       return jsonResponse(urlInput);
-  }
-    
+    public static String get4SquareByLocation(String location, int radiusMeter) throws MalformedURLException, IOException {
+        String urlInput = FSVenURL + "explore" + "?near=" + location
+                + "&radius=" + radiusMeter
+                + "&section='food'" + clientAut;
+        return jsonResponse(urlInput);
+    }
+
     //documentation: https://developer.foursquare.com/docs/api/venues/explore
     // returns a list of recommended venues near the current location.
-    public static String get4SquareByCoordinates(Double lat, Double lng ) throws MalformedURLException, IOException{
-       String urlInput= FSVenURL + "explore" + "?ll="+ lat+","+lng+ "&section='food'"+ clientAut;
-       return jsonResponse(urlInput);
-  }
-    
+    public static String get4SquareByCoordinates(Double lat, Double lng) throws MalformedURLException, IOException {
+        String urlInput = FSVenURL + "explore" + "?ll=" + lat + "," + lng + "&section='food'" + clientAut;
+        return jsonResponse(urlInput);
+    }
+
     //documentation: https://developer.foursquare.com/docs/api/venues/explore
     // returns a list of recommended venues near the current location.
-    public static String get4SquareByCoordinates(Double lat, Double lng, int radiusMeter ) throws MalformedURLException, IOException{
-       String urlInput= FSVenURL + "explore" + "?ll="+ lat+","+lng
-               + "&radius="+radiusMeter+
-               "&section='food'"+ clientAut;
-       return jsonResponse(urlInput);
-  }
-    
-    
+    public static String get4SquareByCoordinates(Double lat, Double lng, int radiusMeter) throws MalformedURLException, IOException {
+        String urlInput = FSVenURL + "explore" + "?ll=" + lat + "," + lng
+                + "&radius=" + radiusMeter
+                + "&section='food'" + clientAut;
+        return jsonResponse(urlInput);
+    }
+
     //documentation: https://developer.foursquare.com/docs/api/venues/categories
     // returns a hieracichal list of categories applied to venues. 
     // (inkludere alle slags venues, ikke kun mad)
-    public static String get4SquareCategories() throws MalformedURLException, IOException{
-        String urlInput= FSVenURL + "categories"+ "?"+ clientAut;//+ "?section='food'";//+ clientAut;//section='food'
-       return jsonResponse(urlInput);
+    public static String get4SquareCategories() throws MalformedURLException, IOException {
+        String urlInput = FSVenURL + "categories" + "?" + clientAut;//+ "?section='food'";//+ clientAut;//section='food'
+        return jsonResponse(urlInput);
     }
     
-    public static String jsonResponse(String urlInput) throws MalformedURLException, IOException{
+    public static String jsonResponseGoogle(String urlInput) throws MalformedURLException, IOException {
+        URL url = new URL(urlInput);//new URL("https://swapi.co/api/people/"+id);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+        con.setRequestProperty("Accept", "application/json;charset=UTF-8");
+
+        Scanner scan = new Scanner(con.getInputStream());
+        String jsonStr = null;
+        if (scan.hasNext()) {
+            jsonStr = scan.nextLine();
+        }
+        scan.close();
+        return jsonStr;
+    }
+
+    public static String jsonResponse(String urlInput) throws MalformedURLException, IOException {
         URL url = new URL(urlInput);//new URL("https://swapi.co/api/people/"+id);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
@@ -124,16 +148,16 @@ public class RemoteServerEndpoint {
         Scanner scan = new Scanner(con.getInputStream());
         String jsonStr = null;
         if (scan.hasNext()) {
-          jsonStr = scan.nextLine();
+            jsonStr = scan.nextLine();
         }
         scan.close();
         return jsonStr;
     }
-    
+
     public static String getValueFromServer(String inputUrl) {
 
         String jsonOutput = "virker ikke";
-        
+
         try {
 
             URL url = new URL(inputUrl);
@@ -155,22 +179,26 @@ public class RemoteServerEndpoint {
             System.out.println(jsonStr);
             jsonOutput = jsonStr;
         } catch (Exception e) {
-                jsonOutput = "catch error: " + e;
+            jsonOutput = "catch error: " + e;
         }
         return jsonOutput;
     }
-    
-        
+
     public static void main(String[] args) throws IOException {
         System.out.println("swapi test");
-       // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
+        // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
         System.out.println(getValueFromServer("https://swapi.co/api/people/?page=2"));
-     System.out.println(get4SquareByLocation("nyc"));
-     
+        System.out.println(get4SquareByLocation("nyc"));
+
         System.out.println("Chr test...");
         System.out.println(get4SquareByCoordinates(55.46, 12.30, 250));
         //System.out.println(get4SquareByLocation("nyc", 250));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
         //System.out.println(get4SquareCategories());
+        
+        //Google test
+        System.out.println("Goggle text search");
+        System.out.println(getLocationByTextSearchGoggle("copenhagen"));
+        
     }
-    }
+}
