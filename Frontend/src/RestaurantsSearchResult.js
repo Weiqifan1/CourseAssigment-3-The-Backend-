@@ -24,14 +24,17 @@ class RestaurantsSearchResult extends React.Component {
 
     componentDidMount() {
         //TODO: At some point we will use fetch to get data from our rest endpoints but not made yet. 
-    fetch(URL+"koge")
+    fetch(URL+this.props.lokation)
               .then(results => {
+                  if(results==null){
+                      return ""; 
+                  }
                 if (!results.ok) {
                   throw Error(results.statusText);
-                }
+                }else{
                 return results.json();
                 
-              }).then(data => {
+              }}).then(data => {
 var arr =[]
 arr=data.response.groups[0].items;
 console.log(arr[3])

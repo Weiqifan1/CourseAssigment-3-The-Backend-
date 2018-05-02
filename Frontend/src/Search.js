@@ -6,7 +6,7 @@ import RestaurantsSearchResult from './RestaurantsSearchResult'
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = { lokation: "" }
+        this.state = { lokation: "", restaurants: "" }
     }
   
 
@@ -35,10 +35,10 @@ class Search extends Component {
                     <div className="container">
                         <CheckboxForFoodTypes id="3" />
                     
-                        <RestaurantsSearchResult id="5u" /> 
+                        
                     </div>
                 </form>
-
+<RestaurantsSearchResult />
 
             </div>
         )
