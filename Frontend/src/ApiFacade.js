@@ -34,7 +34,7 @@ class ApiFacade {
         if (facade.getToken() !== null) {
             var userToken = this.getToken();
             var decoded = jwtDecode(userToken);
-            var userRoles = decoded.roles;
+            var userRoles =  decoded.roles;
         } else {
             const userRole = "";
         }
@@ -50,9 +50,9 @@ class ApiFacade {
         } else {
             const userName = "";
         }
-
         return userName;
     }
+
 
     setToken = (token) => {
         localStorage.setItem('jwtToken', token)
