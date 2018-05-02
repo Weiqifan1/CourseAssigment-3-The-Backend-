@@ -3,7 +3,7 @@ import CheckboxForFoodTypes from './CheckboxForFoodTypes'
 import UserSearchResult from './UserSearchResult';
 import LoginAs from './LoginAs';
 import Search from './Search';
-import RestaurantsSearchResult from './RestaurantsSearchResult'
+
 class Home extends Component {
   
 

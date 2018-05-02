@@ -24,25 +24,15 @@ class RestaurantsSearchResult extends React.Component {
 
     componentDidMount() {
         //TODO: At some point we will use fetch to get data from our rest endpoints but not made yet. 
-    fetch(URL+"koge")
-              .then(results => {
-                if (!results.ok) {
-                  throw Error(results.statusText);
-                }
-                return results.json();
-                
-              }).then(data => {
-var arr =[]
-arr=data.response.groups[0].items;
-console.log(arr[3])
-        const restaurants =arr.map((restaurant) => {
+    
+        const restaurants =chrtest.map((restaurant) => {
 
             return (
 
-                <tr key={restaurant.venue.id}>
-                    <td>{restaurant.venue.id}</td>
+                <tr key={restaurant.id}>
+                    <td>{restaurant.id}</td>
                     {/* <td><img src={restaurant.imgurl} alt="thumb" width="50"></img></td> */}
-                    <td>{restaurant.venue.name}</td><td><img src={Logo_black} alt="Logo" width="20"></img></td>
+                    <td>{restaurant.name}</td><td><img src={Logo_black} alt="Logo" width="20"></img></td>
                     {/* <td>{restaurant.type}{restaurant.pricerange}</td>
                     <td>{restaurant.url}</td><td>{restaurant.price_range}</td>
                     <td>Reviews {restaurant.number_of_reviews}</td> */}
