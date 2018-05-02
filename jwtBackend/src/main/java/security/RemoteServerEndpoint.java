@@ -73,11 +73,11 @@ public class RemoteServerEndpoint {
 
     //Goggle API
     private static final String api = "AIzaSyAFoJXiVC6uuWxVsFgySAiYg2kxI7vyPUk";
-    private static final String goggleApiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
-    private static final String goggleApiKey = "&key=AIzaSyAFoJXiVC6uuWxVsFgySAiYg2kxI7vyPUk";
+    private static final String googleApiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
+    private static final String googleApiKey = "&key=AIzaSyAFoJXiVC6uuWxVsFgySAiYg2kxI7vyPUk";
     
-    public static String getLocationByTextSearchGoggle(String location) throws IOException {
-        String urlInput = goggleApiUrl + location + goggleApiKey;
+    public static String getLocationByTextSearchGoogle(String location) throws IOException {
+        String urlInput = googleApiUrl + location + googleApiKey;
         System.out.println(urlInput);
         return jsonResponseGoogle(urlInput);
     
@@ -198,7 +198,7 @@ public class RemoteServerEndpoint {
         
         //Google test
         System.out.println("Goggle text search");
-        System.out.println(getLocationByTextSearchGoggle("copenhagen"));
+        System.out.println(getLocationByTextSearchGoogle("copenhagen"));
         
     }
 }
