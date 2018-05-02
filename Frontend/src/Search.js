@@ -7,7 +7,7 @@ import fourfacade from './FoursquareFacade'
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = { location: "", restaurants: "", boo:false }
+        this.state = { location: "", restaurants: ""}
     }
   
 
@@ -21,8 +21,10 @@ class Search extends Component {
     onSearch = (evt) => {
         evt.preventDefault(); 
        
-        fourfacade.fetchData(this.state.location)
-      
+     fourfacade.fetchData(this.state.location)
+    
+        this.setState({restaurants: fourfacade.fetchData(this.state.location)})
+        console.log("i onSearch"+this.state.restaurants)
        
        
     }
@@ -42,7 +44,7 @@ class Search extends Component {
                         
                     </div>
                 </form>
-{fourfacade.renderRestaurants()}
+
 
             </div>
         )

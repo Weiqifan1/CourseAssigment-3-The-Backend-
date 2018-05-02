@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo_black from './images/Logo_black.jpg'
 import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png'
-
+import facade from './ApiFacade'
 
 
 const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/";
@@ -9,6 +9,7 @@ const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants
 
 function handleHttpErrors(res) {
     if (!res.ok) {
+        console.log(res)
         throw { message: res.statusText, status: res.status };
     }
   
@@ -20,10 +21,13 @@ class FoursquareFacade  {
    
         //TODO: At some point we will use fetch to get data from our rest endpoints but not made yet. 
  fetchData = (location) => {
-         
-            fetch(URL+location).then(handleHttpErrors)
-          .then(data => {
-console.log("arDAta"+data)
+  
+            fetch(URL+location).then(async function(response) {
+                return await response.json();
+              })
+              .then(function(data) {
+                console.log(data);
+             
        const getRestaurants =data.response.groups[0].items.map((restaurant) => {
 
             return (
@@ -37,12 +41,13 @@ console.log("arDAta"+data)
                     <td>Reviews {restaurant.number_of_reviews}</td> */}
                 </tr>
             )
-        })
+        }
+    )
       
 
-    })}
+    return getRestaurants  })}  
 
-   renderRestaurants(){
+  /*  renderRestaurants(){
 
 
         return (
@@ -57,16 +62,16 @@ console.log("arDAta"+data)
                     </thead>
 
                     <tbody>
-                        {this.getRestaurants}
+                    <tr><td>something</td></tr>
                     </tbody>
 
                 </table>
 
             </div>
 
-        );
-    }
-
+        ); return getRestaurants
+    } */
+ 
 }
 
     const fourfacade = new FoursquareFacade();
