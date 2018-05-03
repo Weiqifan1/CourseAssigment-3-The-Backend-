@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes'
 import UserSearchResult from './UserSearchResult';
+import Logo_black from './images/Logo_black.jpg'
+import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png'
 //import RestaurantsSearchResult from './RestaurantsSearchResult'
 import fourfacade from './FoursquareFacade'
 
@@ -18,13 +20,18 @@ class Search extends Component {
        
     }
 
-    onSearch = (evt) => {
+    onSearch = async(evt) => {
         evt.preventDefault(); 
        
-     fourfacade.fetchData(this.state.location)
+        function doesStuffToKaninAndRendersIt(kanin){
+            //stuff
+            console.log(kanin);
+        }
+
+   var kanin =  await fourfacade.fetchData(this.state.location, doesStuffToKaninAndRendersIt)
     
-        this.setState({restaurants: fourfacade.fetchData(this.state.location)})
-        console.log("i onSearch"+this.state.restaurants)
+        //this.setState({restaurants:kanin})
+        //console.log("i onSearch"+this.state.restaurants)
        
        
     }
@@ -44,7 +51,26 @@ class Search extends Component {
                         
                     </div>
                 </form>
+                
+                        <div>
+                            <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right"></img>
+                            <table className="table">
+                                <thead>
+                                    <tr><th></th><th>Logo</th><th>Restaurant</th><th>Logo</th><th>Food Type</th><th>Home Page</th><th>Price Range</th><th>Reviews</th></tr>
+                                </thead>
+                                <tbody>
+                               
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                
 
+        {!this.state.location==="" ? (<fourfacade id="5u" onSearch={this.onSearch} />) :
+
+(<div>
+{this.state.restaurants}
+</div>)}
 
             </div>
         )
