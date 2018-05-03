@@ -1,20 +1,21 @@
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\exceptions\AuthenticationException.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\SharedSecret.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\utils\SetupTestUsers.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\JWTAuthenticationFilter.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\UserPrincipal.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\UserFacade.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\ErrorEndpoint.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\StatisticsFacade.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\rest\ApplicationConfig.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\cors\CorsRequestFilter.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\JWTSecurityContext.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\exceptions\NotFoundException.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\RemoteServerEndpoint.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\cors\CorsResponseFilter.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\exceptions\GenericExceptionMapper.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\rest\DemoResource.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\LoginEndpoint.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\Role.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\User.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\Error.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\entity\Role.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\SharedSecret.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\JWTSecurityContext.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\entity\User.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\Error.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\utils\SetupTestUsers.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\exceptions\AuthenticationException.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\UserPrincipal.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\rest\DemoResource.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\exceptions\NotFoundException.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\exceptions\GenericExceptionMapper.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\cors\CorsResponseFilter.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\entity\StatisticsFacade.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\cors\CorsRequestFilter.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\rest\ApplicationConfig.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\JWTAuthenticationFilter.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\entity\UserFacade.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\GoogleApi.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\ErrorEndpoint.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\LoginEndpoint.java
+C:\chrsem3pro\week182018pro\sem3pro\jwtBackend\src\main\java\security\RemoteServerEndpoint.java

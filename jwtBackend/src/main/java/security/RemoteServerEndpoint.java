@@ -184,6 +184,11 @@ public class RemoteServerEndpoint {
         return jsonOutput;
     }
 
+    
+    //private static final String GoogleKey = "AIzaSyAFoJXiVC6uuWxVsFgySAiYg2kxI7vyPUk";
+    //private static final HttpClient client = 
+    
+    
     public static void main(String[] args) throws IOException {
         System.out.println("swapi test");
         // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
@@ -197,8 +202,8 @@ public class RemoteServerEndpoint {
         //System.out.println(get4SquareCategories());
         
         //Google test
-        System.out.println("Goggle text search");
-        System.out.println(getLocationByTextSearchGoogle("copenhagen"));
+        //System.out.println("Goggle text search");
+        //System.out.println(getLocationByTextSearchGoogle("copenhagen"));
         
     }
 }
