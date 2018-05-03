@@ -81,7 +81,7 @@ public class RemoteServerEndpoint {
 
   }
         public static String get4SquareByLokationAndCategory(String location, String category ) throws MalformedURLException, IOException{
-       String urlInput= FSVenURL + "explore" + "?near="+ location+ "&section='food'"+"?query="+category+ clientAut;
+       String urlInput= FSVenURL + "explore" + "?near="+ location+ "&section='food'"+"&query="+category+ clientAut;
        return jsonResponse(urlInput);
 
   }
