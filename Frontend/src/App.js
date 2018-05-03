@@ -133,7 +133,19 @@ class App extends Component {
     return (
       
       <div>
-
+<div class="ui checkbox">
+  <input type="checkbox" name="example"/>
+  <label>Cafe</label>
+  <p>
+  <input type="checkbox"/>
+  <label>Fast Food</label>
+  <p>
+  
+  <input type="checkbox"/>
+  <label>Gourmet</label>
+ </p>
+ </p>
+</div>
       <div>
         <form>
           <input type="text" onChange={this.searchHandler}
@@ -147,9 +159,11 @@ class App extends Component {
          <h2> {cusines.name} </h2>
          <h2> {cusines.type} </h2>
          <h2> {cusines.url} </h2>
+
           </div>
         )
         }
+
          </div>
     );
       }
