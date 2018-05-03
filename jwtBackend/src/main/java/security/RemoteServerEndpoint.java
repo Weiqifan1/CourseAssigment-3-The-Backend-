@@ -80,7 +80,11 @@ public class RemoteServerEndpoint {
        return jsonResponse(urlInput);
 
   }
-    
+        public static String get4SquareByLokationAndCategory(String location, String category ) throws MalformedURLException, IOException{
+       String urlInput= FSVenURL + "explore" + "?near="+ location+ "&section='food'"+"?query="+category+ clientAut;
+       return jsonResponse(urlInput);
+
+  }
     //documentation: https://developer.foursquare.com/docs/api/venues/explore
     // returns a list of recommended venues near the current location.
     public static String get4SquareByLocation(String location, int radiusMeter ) throws MalformedURLException, IOException{
@@ -177,8 +181,8 @@ public class RemoteServerEndpoint {
 //        System.out.println(get4SquareByCoordinates(55.46, 12.30, 250));
 //        System.out.println(get4SquareByLokation("nyc"));
         System.out.println("Benedikte test");
-        System.out.println(get4SquareByCoordinatesAsString("55.45,12.30"));
-       
+//        System.out.println(get4SquareByCoordinatesAsString("55.45,12.30"));
+        System.out.println(get4SquareByLokationAndCategory("koge", "tacos"));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
         //System.out.println(get4SquareCategories());
     }
