@@ -40,7 +40,6 @@ class Search extends Component {
                            <td>{restaurant.venue.id}</td>
                            <td>{restaurant.venue.name}</td>
                            <td><img src={Logo_black} alt="Logo" width="20"></img></td>
-                        
                        </tr>
                
                    </tbody>
@@ -52,6 +51,7 @@ class Search extends Component {
                          parent.setState({names:restaurantArray})
             })
         }
+        
     someAction(event) {
         this.setState({names: 'recent'});
       }

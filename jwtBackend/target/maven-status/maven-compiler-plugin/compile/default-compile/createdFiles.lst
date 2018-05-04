@@ -8,6 +8,7 @@ entity\UserFacade.class
 entity\Role_.class
 entity\StatisticsFacade.class
 rest\ApplicationConfig.class
+security\GoogleAPI.class
 security\UserPrincipal.class
 utils\SetupTestUsers.class
 exceptions\NotFoundException.class
