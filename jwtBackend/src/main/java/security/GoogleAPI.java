@@ -42,9 +42,7 @@ public class GoogleAPI {
     private static final String USER_AGENT = "Mozilla/5.0";
     
     private static String getplaceByTextSearch(String search) throws IOException {
-        //Mangler at kunne indsætte + i hvert mellemrum
         String trim = search.replace(" ", "+").trim();
-        
         //System.out.println(trim);
         
         String requestUrl = TextSerarchUrl + "?query=" + trim + "&key=" + UrlKey;
