@@ -32,7 +32,7 @@ public class RemoteServerEndpoint {
     
   
        @GET
-       @Path("/{lokation}")
+       @Path("name/{lokation}")
   
     @Produces(MediaType.APPLICATION_JSON)
     public String getVehicles(@PathParam("lokation") String lokation) throws IOException {
@@ -40,7 +40,7 @@ public class RemoteServerEndpoint {
         return output;
     }
     @GET
-         @Path("/{ll}")
+         @Path("ll/{ll}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getEatLL(@PathParam("ll") String ll) throws IOException {
         String output = get4SquareByCoordinatesAsString(ll);
