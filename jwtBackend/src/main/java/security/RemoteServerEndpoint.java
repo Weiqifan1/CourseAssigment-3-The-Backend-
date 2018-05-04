@@ -32,7 +32,7 @@ public class RemoteServerEndpoint {
     
   
        @GET
-         @Path("/{lokation}")
+       @Path("/{lokation}")
   
     @Produces(MediaType.APPLICATION_JSON)
     public String getVehicles(@PathParam("lokation") String lokation) throws IOException {
@@ -66,7 +66,7 @@ public class RemoteServerEndpoint {
 //    scan.close();
 //    return jsonStr;
 
-        private static final String client_id = "KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES";
+    private static final String client_id = "KL1DJ3CJHMBRNKAXEZEMMDDIIOQFTIW3CHIC1W03GBTE4QES";
     private static final String client_secret = "2EPVZLOWM51X51JJU5YXQOH2YHBRM5EZJRAZWMB2VBMDSABK&v=20180501";
     private static final String clientAut = "&client_id="+client_id+"&client_secret="+client_secret;
     private static final String FSVenURL = "https://api.foursquare.com/v2/venues/";

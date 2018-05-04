@@ -6,23 +6,51 @@
 package security;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import javax.ws.rs.GET;
 
 /**
  *
  * @author Christian
  */
-public class GoogleAPI {
 
+@Path("googleplaces")
+
+public class GoogleAPI {
+    
+    @GET
+    @Path("/{place}")
+    
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPlaceByText(@PathParam("place") String search) throws IOException {
+        String outPut = getplaceByTextSearch(search);
+        return outPut;
+    }
+                                                
+    private static final String TextSerarchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json";
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
     private static final String StandardRadius = "&radius=500";
     private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0";
     private static final String URLexample = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0";
     private static final String USER_AGENT = "Mozilla/5.0";
+    
+    private static String getplaceByTextSearch(String search) throws IOException {
+        //Mangler at kunne indsætte + i hvert mellemrum
+        String trim = search.replace(" ", "+").trim();
+        
+        //System.out.println(trim);
+        
+        String requestUrl = TextSerarchUrl + "?query=" + trim + "&key=" + UrlKey;
+        System.out.println(requestUrl);
+        return sendGET(requestUrl);
+    }
 
     private static String getGooglePlaceByCoor(String latAndLng, int radius) throws IOException {
         String mystr
@@ -65,7 +93,8 @@ public class GoogleAPI {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
+        //System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
+        System.out.println(getplaceByTextSearch("mac donalds in copenhagen"));
     }
 
 }
