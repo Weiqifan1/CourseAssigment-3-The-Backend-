@@ -123,13 +123,14 @@ public class RemoteServerEndpoint {
         con.setRequestMethod("GET");
         con.setRequestProperty("Accept", "application/json;charset=UTF-8");
 
-        Scanner scan = new Scanner(con.getInputStream());
-        System.out.println(url);
-        String jsonStr = null;
-        if (scan.hasNext()) {
-            jsonStr = scan.nextLine();
+        String jsonStr;
+        try (Scanner scan = new Scanner(con.getInputStream())) {
+            System.out.println(url);
+            jsonStr = null;
+            if (scan.hasNext()) {
+                jsonStr = scan.nextLine();
+            }
         }
-        scan.close();
         return jsonStr;
     }
 
@@ -176,9 +177,7 @@ public class RemoteServerEndpoint {
 //        System.out.println("swapi test");
 //       // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
 //        System.out.println(getValueFromServer("https://swapi.co/
-    System.out.println (get4SquareByLokationAndCategory
-
-("koge", "tacos"));
+    System.out.println (get4SquareByLokation("koge"));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
         //System.out.println(get4SquareCategories());
     }
