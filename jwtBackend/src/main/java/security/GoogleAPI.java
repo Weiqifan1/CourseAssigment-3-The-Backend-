@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -35,8 +37,31 @@ public class GoogleAPI {
                 = UrlFirstPart + "?location=" + latAndLng + StandardRadius + "&key=" + UrlKey;
         return sendGET(mystr);
     }
-
-    //
+        
+    private static String regexBetwTags(String text, String tag1, String tag2) {
+        final Pattern pattern = Pattern.compile(tag1+"(.+?)"+tag2);
+        final Matcher matcher = pattern.matcher(text);
+        matcher.find();
+        return matcher.group(1);
+    }
+    
+    private static String getGoogleCityByCoor(String googleJSON){
+        String firstWork = regexBetwTags(googleJSON, "name", ",");
+        String secondWork = firstWork.substring(3);  
+        secondWork = secondWork.trim();
+        secondWork = secondWork.substring(1,secondWork.length()-1);
+        return secondWork;
+    }
+    
+    private static String getGoogleStreetByCoor(String googleJSON) {
+        String firstWork = regexBetwTags(googleJSON, "rating(.*)vicinity", "\"");
+        firstWork = regexBetwTags(firstWork, "vicinity", "}");
+        String secondWork = firstWork.substring(3);   
+        secondWork = secondWork.trim();
+        secondWork = secondWork.substring(1,secondWork.length()-1);
+        return secondWork;
+    }
+    
     private static String sendGET(String myUrl) throws IOException {
         String output = "";
         URL obj = new URL(myUrl);//GET_URL
@@ -66,6 +91,9 @@ public class GoogleAPI {
 
     public static void main(String[] args) throws IOException {
         System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
+        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
+        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
+        
     }
 
 }
