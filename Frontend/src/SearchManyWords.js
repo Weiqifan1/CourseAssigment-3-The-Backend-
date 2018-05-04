@@ -10,69 +10,71 @@ import fourfacade from './FoursquareFacade'
 class Search extends Component {
     constructor(props) {
         super(props);
-      
-        this.state = { location: "", names:""}
+
+        this.state = { location: "", names: "" }
         this.someAction = this.someAction.bind(this);
     }
- 
+
     fetchData = () => {
-        var parent=this;
-        //const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/";
-        const URL = "http://localhost:8084/jwtbackend/api/googleplaces";
-        fetch(URL + this.state.location).then( function (response) {
+        var parent = this;
+        const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/";
+        
+        fetch(URL + this.state.location).then(function (response) {
+            //console.log(URL + this.state.location);
             return response.json();
         })
             .then(function (data) {
+                console.log(data);
 
-
-                const restaurantArray = data.response.groups[0].items.map ((restaurant) => {
+                const restaurantArray = data.results.map((restaurant) => {
                     // console.log(restaurant.venue.name)
-               
-                   return (
-                       
-               <div>
-               <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right"></img>
-               <table className="table">
-                    <h3>Search by many words</h3>
-                   <thead>
-                       <tr><th></th><th>Logo</th><th>Restaurant</th><th>Logo</th><th>Food Type</th><th>Home Page</th><th>Price Range</th><th>Reviews</th></tr>
-                   </thead>
-                   <tbody>
-                       <tr key={restaurant.venue.id}>
-                           <td>{restaurant.venue.id}</td>
-                           <td>{restaurant.venue.name}</td>
-                           <td><img src={Logo_black} alt="Logo" width="20"></img></td>
-                       </tr>
-               
-                   </tbody>
-               </table>
-               </div>       
-               )
-                         })
-            
-                         parent.setState({names:restaurantArray})
+
+                    return (
+
+                        <div>
+                            <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right"></img>
+                            <table className="table">
+                                <thead>
+                                    <tr><th></th><th>Logo</th><th>Restaurant</th><th>Rating</th><th>Address</th><th>Home Page</th><th>Price Range</th><th>Reviews</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr key={restaurant.id}>
+                                        <td><img src={Logo_black} alt="Logo" width="20"></img></td>
+                                        <td>{restaurant.name}</td>
+                                        <td>{restaurant.rating}</td>
+                                        <td>{restaurant.formatted_address}</td>
+                                        
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    )
+                })
+
+                parent.setState({ names: restaurantArray })
             })
-        }
-        
+    }
+
     someAction(event) {
-        this.setState({names: 'recent'});
-      }
-  
+        this.setState({ names: 'recent' });
+    }
+
     onChange = (evt) => {
         console.log(evt.target.value)
         this.setState({ [evt.target.id]: evt.target.value })
-       
+
     }
 
     onSearch = async (evt) => {
-    //     evt.preventDefault(); 
-    //   var  kanin =  await this.fetchData(this.state.location, doesStuffToKaninAndRendersIt)
+        //     evt.preventDefault(); 
+        //   var  kanin =  await this.fetchData(this.state.location, doesStuffToKaninAndRendersIt)
     }
-    
-   
-    
+
+
+
     render() {
-      console.log(this.state.names)
+        console.log(this.state.names)
         return (
             <div>
 
@@ -84,16 +86,16 @@ class Search extends Component {
 
                     <div className="container">
                         <CheckboxForFoodTypes id="3" />
-            
-                        
+
+
                     </div>
                 </form>
-                
-          <div>  {this.state.names}   </div>           
+
+                <div>  {this.state.names}   </div>
 
 
 
-   
+
 
             </div>
         )
