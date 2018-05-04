@@ -11,7 +11,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
       
-        this.state = { location: "", names:""}
+        this.state = { location: "", names:"", poweredlogo:""}
         this.someAction = this.someAction.bind(this);
     }
  
@@ -30,16 +30,19 @@ class Search extends Component {
                    return (
                        
                <div>
-               <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right"></img>
+           
                <table className="table">
                    <thead>
-                       <tr><th></th><th>Logo</th><th>Restaurant</th><th>Logo</th><th>Food Type</th><th>Home Page</th><th>Price Range</th><th>Reviews</th></tr>
+                       <tr><th></th><th>Logo</th><th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
                    </thead>
                    <tbody>
                        <tr key={restaurant.venue.id}>
-                           <td>{restaurant.venue.id}</td>
+                       <td><img src={Logo_black} alt="Logo" width="20"></img></td>
+                       <td><img src={restaurant.venue.categories[0].icon.prefix+restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20"></img></td>
                            <td>{restaurant.venue.name}</td>
-                           <td><img src={Logo_black} alt="Logo" width="20"></img></td>
+                           <td>{restaurant.venue.categories[0].name}</td>
+                           <td>{restaurant.venue.location.address}</td>
+                           <td>{restaurant.reasons.items[0].summary}</td>
                         
                        </tr>
                
@@ -49,7 +52,7 @@ class Search extends Component {
                )
                          })
             
-                         parent.setState({names:restaurantArray})
+                         parent.setState({names:restaurantArray,poweredlogo:<img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right"></img>})
             })
         }
     someAction(event) {
@@ -87,7 +90,7 @@ class Search extends Component {
                     </div>
                 </form>
                 
-          <div>  {this.state.names}   </div>           
+          <div>  {this.state.poweredlogo}{this.state.names}   </div>           
 
 
 
