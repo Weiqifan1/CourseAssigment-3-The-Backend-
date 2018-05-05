@@ -33,16 +33,16 @@ class Search extends Component {
            
                <table className="table">
                    <thead>
-                       <tr><th></th><th>Logo</th><th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
+                       <tr><th></th></tr>
                    </thead>
                    <tbody>
                        <tr key={restaurant.venue.id}>
                        <td><img src={Logo_black} alt="Logo" width="20"></img></td>
-                       <td><img src={restaurant.venue.categories[0].icon.prefix+restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20"></img></td>
-                           <td>{restaurant.venue.name}</td>
-                           <td>{restaurant.venue.categories[0].name}</td>
-                           <td>{restaurant.venue.location.address}</td>
-                           <td>{restaurant.reasons.items[0].summary}</td>
+                       <td><img src={restaurant.venue.categories[0].icon.prefix+restaurant.venue.categories[0].icon.suffix} alt="picture" width="20"></img></td>
+                           <td><p>{restaurant.venue.name}</p>{restaurant.venue.location.address}</td>
+                       
+                           <td><p>{restaurant.venue.categories[0].name}</p>{restaurant.reasons.items[0].summary}</td>
+                           <td></td>
                         
                        </tr>
                
@@ -90,7 +90,8 @@ class Search extends Component {
                     </div>
                 </form>
                 
-          <div>  {this.state.poweredlogo}{this.state.names}   </div>           
+          <div>  {this.state.poweredlogo}
+          {this.state.names}   </div>           
 
 
 
