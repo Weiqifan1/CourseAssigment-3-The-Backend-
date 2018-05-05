@@ -12,24 +12,17 @@ class Search extends Component {
 
     this.state = {
       location: '',
-      restaurantsByLocation: '',
+      restaurants: '',
     };
   }
 
 
     onSubmit = async (evt) => {
       evt.preventDefault();
-      console.log(this.state.location);
       await FoursquareFacade.fetchRestaurantsByLocation(this.state.location);
-      /* const restaurantList = FoursquareFacade.getRestaurantsByLocation();
-      this.setState({ restaurantsByLocation: restaurantList }); */
-      console.log(this.state.restaurantList);
-
-      // this.setState({arr: FoursquareFacade(this.state.lokation)});
-      // console.log("er arr i state?");
-      // console.log(this.state.arr);
-      // this.setState({myString: FoursquareFacade(this.state.lokation)});
-      // console.log(`onSearch: ${this.state.myString}`);
+      FoursquareFacade.getRestaurantsByLocation();
+      this.setState({ restaurants: FoursquareFacade.getRestaurantsByLocation() });
+      // console.log(this.state.restaurants);
     }
 
     onChange = (evt) => {
@@ -37,12 +30,38 @@ class Search extends Component {
       this.setState({ [evt.target.id]: evt.target.value });
     }
 
-    componentWillUpdate(nextProps, nextState) {
-      const restaurantList = FoursquareFacade.getRestaurantsByLocation();
-      this.setState({ restaurantsByLocation: restaurantList });
-    }
-
     render() {
+      const data = this.state.restaurants;
+      console.log(data);
+
+      /* const restaurantTable = data.response.groups[0].items.map(restaurant =>
+      // console.log(restaurant.venue.name)
+
+        (
+
+          <div>
+
+            <table className="table">
+              <thead>
+                <tr><th /><th>Logo</th><th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
+              </thead>
+              <tbody>
+                <tr key={restaurant.venue.id}>
+                  <td><img src={Logo_black} alt="Logo" width="20" /></td>
+                  <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td>
+                  <td>{restaurant.venue.name}</td>
+                  <td>{restaurant.venue.categories[0].name}</td>
+                  <td>{restaurant.venue.location.address}</td>
+                  <td>{restaurant.reasons.items[0].summary}</td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        ),
+      ); */
+
       return (
         <div>
 
@@ -55,6 +74,11 @@ class Search extends Component {
             <div className="container">
               <CheckboxForFoodTypes id="3" />
               {/* <RestaurantsSearchResult id="5u" /> */}
+
+            </div>
+
+            <div>
+              {/* {restaurantTable} */}
 
             </div>
 
