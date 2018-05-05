@@ -17,7 +17,7 @@ class Search extends Component {
  
     fetchData = () => {
         var parent=this;
-        const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/";
+        const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/name/";
         fetch(URL+"name/" + this.state.location).then( function (response) {
             return response.json();
         })
