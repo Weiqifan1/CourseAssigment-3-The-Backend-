@@ -1,16 +1,17 @@
-export default {
+
+module.exports = {
     "parser": "babel-eslint",
-    "env": {
+    "env": { // we are using es 6
         "browser": true,
         "es6": true
     },
-    "settings": {
+    "settings": { // we are useing jsx
         "ecmascript": 6,
         "jsx": true
     },
     "parserOptions": {
-        "ecmaVersion": 2017,
-        "ecmaFeatures": {
+        "ecmaVersion": 2017, //we are useing ecmaversion 2017
+        "ecmaFeatures": { // we are haveing support for decorators, restSpred and jsx
             "experimentalObjectRestSpread": true,
             "experimentalDecorators": true,
             "jsx": true
@@ -23,6 +24,8 @@ export default {
     "extends": "airbnb",
     "rules": {
         "react/jsx-filename-extension": 0,
-        "function-paren-newline": 0
+        "function-paren-newline": 0,
+        "linebreak-style": 0
     }
-};
+ };
+ 

@@ -1,43 +1,49 @@
-import React, { Component } from "react";
-import Logo_black from './images/Logo_black.jpg'
-import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png'
-import facade from './ApiFacade'
-
-
-const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/";
-
 
 function handleHttpErrors(res) {
-    if (!res.ok) {
+  if (!res.ok) {
+    throw { message: res.statusText, status: res.status };
+  }
 
-        throw { message: res.statusText, status: res.status };
-    }
-
-    return res.json();
+  return res.json();
 }
-var getRestaurants = "";
+
+const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/name/';
+
 class FoursquareFacade {
+    /* handleData = (data, callback) => {
+      let restaurants = [];
+      restaurants = data.response.groups[0].items;
+      callback(restaurants);
+    } */
 
+    fetchRestaurantsByLocation = (location) => { // , callback
+      console.log(location);
+      fetch(URL + location)
 
-    //TODO: At some point we will use fetch to get data from our rest endpoints but not made yet. 
-    fetchData = async (location, callback) => {
-
-        fetch(URL + location).then(async function (response) {
-            return await response.json();
+        .then(async (results) => {
+          if (!results.ok) {
+            throw Error(results.statusText);
+          }
+          return results.json();
         })
-            .then(function (data) {
-
-
-                const restaurantsTbody = data.response.groups[0].items
-            
-               callback(restaurantsTbody)
-            })
+        .then((data) => {
+          let restaurants = [];
+          restaurants = data.response.groups[0].items;
+          this.setRestaurantsByLocation(restaurants);
+          // callback(restaurants);
+        });
     }
+
+        setRestaurantsByLocation = (responseFromFetch) => {
+          localStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // Key value pair name(key)/value
+        };
+
+        getRestaurantsByLocation = () => localStorage.getItem('restaurantsByLocation'); // Is the same as the 3 lines below.
+
+  /* getToken = () => {
+              return localStorage.getItem('jwtToken')
+          } */
 }
-
-
-
-
 
 const fourfacade = new FoursquareFacade();
 
