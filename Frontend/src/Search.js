@@ -4,10 +4,82 @@ import UserSearchResult from './UserSearchResult';
 import Logo_black from './images/Logo_black.jpg';
 import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png';
 // import RestaurantsSearchResult from './RestaurantsSearchResult'
-import fourfacade from './FoursquareFacade';
-
+import FoursquareFacade from './FoursquareFacade';
 
 class Search extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      location: '',
+      restaurantsByLocation: '',
+    };
+  }
+
+
+    onSubmit = async (evt) => {
+      evt.preventDefault();
+      console.log(this.state.location);
+      await FoursquareFacade.fetchRestaurantsByLocation(this.state.location);
+      /* const restaurantList = FoursquareFacade.getRestaurantsByLocation();
+      this.setState({ restaurantsByLocation: restaurantList }); */
+      console.log(this.state.restaurantList);
+
+      // this.setState({arr: FoursquareFacade(this.state.lokation)});
+      // console.log("er arr i state?");
+      // console.log(this.state.arr);
+      // this.setState({myString: FoursquareFacade(this.state.lokation)});
+      // console.log(`onSearch: ${this.state.myString}`);
+    }
+
+    onChange = (evt) => {
+      console.log(evt.target.value);
+      this.setState({ [evt.target.id]: evt.target.value });
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+      const restaurantList = FoursquareFacade.getRestaurantsByLocation();
+      this.setState({ restaurantsByLocation: restaurantList });
+    }
+
+    render() {
+      return (
+        <div>
+
+          <form onSubmit={this.onSubmit} onChange={this.onChange} >
+            <div id="search">
+              <input placeholder="Location" id="location" />
+              <button id="8">search</button>
+            </div>
+
+            <div className="container">
+              <CheckboxForFoodTypes id="3" />
+              {/* <RestaurantsSearchResult id="5u" /> */}
+
+            </div>
+
+            <div>
+
+              <p>{this.state.location}</p>
+              <p>{this.state.arr}</p>
+            </div>
+          </form>
+
+
+        </div>
+      );
+    }
+}
+
+export default Search;
+
+// <RestaurantsSearchResult id="5u"/>
+// <p>{this.state.userlocation}</p>
+// brugerlokation={this.state.lokation}
+
+
+// Fredags nødløsningen
+/* class Search extends Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +102,36 @@ class Search extends Component {
     this.setState({ names: 'recent' });
   }
 
-    fetchData = () => {
+
+    render() {
+      console.log(this.state.names);
+      return (
+        <div>
+
+          <form onSubmit={this.fetchData} onChange={this.onChange} >
+            <div id="search">
+              <input placeholder="Location" id="location" />
+              <button id="8">search</button>
+            </div>
+
+            <div className="container">
+              <CheckboxForFoodTypes id="3" />
+
+
+            </div>
+          </form>
+
+          <div>  {this.state.poweredlogo}{this.state.names}   </div>
+
+
+        </div>
+      );
+    }
+}
+
+export default Search;
+
+fetchData = () => {
       const parent = this;
       const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/';
       fetch(`${URL}name/${this.state.location}`).then(response => response.json())
@@ -65,34 +166,5 @@ class Search extends Component {
 
           parent.setState({ names: restaurantArray, poweredlogo: <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right" /> });
         });
-    }
-
-
-    render() {
-      console.log(this.state.names);
-      return (
-        <div>
-
-          <form onSubmit={this.fetchData} onChange={this.onChange} >
-            <div id="search">
-              <input placeholder="Location" id="location" />
-              <button id="8">search</button>
-            </div>
-
-            <div className="container">
-              <CheckboxForFoodTypes id="3" />
-
-
-            </div>
-          </form>
-
-          <div>  {this.state.poweredlogo}{this.state.names}   </div>
-
-
-        </div>
-      );
-    }
-}
-
-export default Search;
+    } */
 

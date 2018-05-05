@@ -7,29 +7,42 @@ function handleHttpErrors(res) {
   return res.json();
 }
 
-const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/name';
+const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/name/';
 
 class FoursquareFacade {
-    handleData = (data, callback) => {
+    /* handleData = (data, callback) => {
       let restaurants = [];
       restaurants = data.response.groups[0].items;
       callback(restaurants);
-    }
+    } */
 
-    fetch = location => // , callback
-
+    fetchRestaurantsByLocation = (location) => { // , callback
+      console.log(location);
       fetch(URL + location)
+
         .then(async (results) => {
           if (!results.ok) {
             throw Error(results.statusText);
           }
-          return await results.json();
+          return results.json();
         })
-        /*  .then(data => {
-             var restaurants = []
-             restaurants = data.response.groups[0].items;
-             callback(restaurants);
-         }) */
+        .then((data) => {
+          let restaurants = [];
+          restaurants = data.response.groups[0].items;
+          this.setRestaurantsByLocation(restaurants);
+          // callback(restaurants);
+        });
+    }
+
+        setRestaurantsByLocation = (responseFromFetch) => {
+          localStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // Key value pair name(key)/value
+        };
+
+        getRestaurantsByLocation = () => localStorage.getItem('restaurantsByLocation'); // Is the same as the 3 lines below.
+
+  /* getToken = () => {
+              return localStorage.getItem('jwtToken')
+          } */
 }
 
 const fourfacade = new FoursquareFacade();

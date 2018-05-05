@@ -42,7 +42,6 @@ class Search extends Component {
           console.log(data);
 
           const restaurantArray = data.results.map(restaurant =>
-          // console.log(restaurant.venue.name)
 
             (
 
