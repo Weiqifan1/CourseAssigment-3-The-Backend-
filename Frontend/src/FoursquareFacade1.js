@@ -35,10 +35,14 @@ class FoursquareFacade {
     }
 
         setRestaurantsByLocation = (responseFromFetch) => {
-          localStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // Key value pair name(key)/value
+          localStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
         };
 
+<<<<<<< HEAD
         getRestaurantsByLocation = () => localStorage.getItem('restaurantsByLocation') // Is the same as the 3 lines below.
+=======
+        getRestaurantsByLocation = () => JSON.parse(localStorage.getItem('restaurantsByLocation')); // Is the same as the 3 lines below.
+>>>>>>> 4d797b68daf66ca3caf08084c636c4d07ce1f2ff
 
   /* getToken = () => {
               return localStorage.getItem('jwtToken')

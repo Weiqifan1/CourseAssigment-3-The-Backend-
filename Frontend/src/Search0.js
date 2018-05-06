@@ -12,8 +12,110 @@ class Search extends Component {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       location: '', type: 'notype', restaurants: '', poweredlogo: '',
     };
+=======
+      location: '',
+      restaurants: [],
+    };
+  }
+
+
+    onSubmit = async (evt) => {
+      evt.preventDefault();
+      await FoursquareFacade.fetchRestaurantsByLocation(this.state.location);
+      FoursquareFacade.getRestaurantsByLocation();
+      this.setState({ restaurants: FoursquareFacade.getRestaurantsByLocation() });
+      // console.log(this.state.restaurants);
+    }
+
+    onChange = (evt) => {
+      console.log(evt.target.value);
+      this.setState({ [evt.target.id]: evt.target.value });
+    }
+
+    render() {
+      const data = this.state.restaurants;
+      console.log(data);
+
+      const restaurantTable = data.map(restaurant =>
+      // console.log(restaurant.venue.name)
+
+        (
+
+          <div>
+
+            <table className="table">
+              <thead>
+                <tr><th />{/* <th>Logo</th> */}<th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
+              </thead>
+              <tbody>
+                <tr key={restaurant.venue.id}>
+                  <td><img src={Logo_black} alt="Logo" width="20" /></td>
+                  {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
+                  <td>{restaurant.venue.name}</td>
+                  <td>{restaurant.venue.categories[0].name}</td>
+                  <td>{restaurant.venue.location.address}</td>
+                  <td>{restaurant.reasons.items[0].summary}</td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        ),
+      );
+
+      return (
+        <div>
+
+          <form onSubmit={this.onSubmit} onChange={this.onChange} >
+            <div id="search">
+              <input placeholder="Location" id="location" />
+              <button id="8">search</button>
+            </div>
+
+            <div className="container">
+              <CheckboxForFoodTypes id="3" />
+              {/* <RestaurantsSearchResult id="5u" /> */}
+
+            </div>
+
+            <div>
+              {/* Comment */}
+              {restaurantTable}
+
+
+            </div>
+
+            <div>
+
+              <p>{this.state.location}</p>
+              <p>{this.state.arr}</p>
+            </div>
+          </form>
+
+
+        </div>
+      );
+    }
+}
+
+export default Search;
+
+// <RestaurantsSearchResult id="5u"/>
+// <p>{this.state.userlocation}</p>
+// brugerlokation={this.state.lokation}
+
+
+// Fredags nødløsningen
+/* class Search extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { location: '', names: '', poweredlogo: '' };
+>>>>>>> 4d797b68daf66ca3caf08084c636c4d07ce1f2ff
     this.someAction = this.someAction.bind(this);
   }
 
