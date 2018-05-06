@@ -1,21 +1,8 @@
 
-function handleHttpErrors(res) {
-  if (!res.ok) {
-    throw { message: res.statusText, status: res.status };
-  }
-
-  return res.json();
-}
 
 const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
 
 class GoogleFacade {
-    /* handleData = (data, callback) => {
-      let restaurants = [];
-      restaurants = data.response.groups[0].items;
-      callback(restaurants);
-    } */
-
     fetchRestaurantsByQuery = (location) => { // , callback
       console.log(location);
       fetch(URL + location)
@@ -39,10 +26,6 @@ class GoogleFacade {
         };
 
         getRestaurantsByLocation = () => JSON.parse(localStorage.getItem('restaurantsByLocation')); // Is the same as the 3 lines below.
-
-  /* getToken = () => {
-              return localStorage.getItem('jwtToken')
-          } */
 }
 
 const googlefacade = new GoogleFacade();
