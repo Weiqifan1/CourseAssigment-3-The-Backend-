@@ -51,5 +51,6 @@
   width: 100px;
 }
 .table{
-  text-align: left;
+  justify-content: flex-start;
+
 }
