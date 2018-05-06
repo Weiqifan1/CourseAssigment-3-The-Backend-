@@ -13,7 +13,8 @@ class Search extends Component {
     this.state = {
       location: '',
       restaurants: [],
-      restaurantArray: '',
+      restaurantTableRender: '',
+      poweredlogo: '',
     };
   }
 
@@ -37,33 +38,28 @@ class Search extends Component {
 
           <table className="table">
             <thead>
-              <tr><img src={Powered_by_Foursquare_black_300} alt="Logo" width="20" /></tr>
+              <tr />
             </thead>
             <tbody>
-            <tr key={restaurant.venue.id}>
-              <td><img src={Logo_black} alt="Logo" width="20" /></td>
-              {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
-              <td>{restaurant.venue.name}</td>
-              <td>{restaurant.venue.categories[0].name}</td>
-              <td>{restaurant.venue.location.address}</td>
-              <td>{restaurant.reasons.items[0].summary}</td>
-
-            </tr>
-          </tbody>
+              <tr key={restaurant.venue.id}>
+                <td><img src={Logo_black} alt="Logo" width="20" /></td>
+                {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
+                <td>{restaurant.venue.name}</td>
+                <td>{restaurant.venue.categories[0].name}</td>
+                <td>{restaurant.venue.location.address}</td>
+                <td>{restaurant.reasons.items[0].summary}</td>
+              </tr>
+            </tbody>
           </table>
         </div >
       ),
     );
 
-    this.setState({ restaurantArray: restaurantTable });
+    this.setState({ restaurantTableRender: restaurantTable, poweredlogo: <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right" /> });
   };
 
 
   render() {
-    const data = this.state.restaurants;
-    console.log(data);
-
-
     return (
       <div>
 
@@ -81,8 +77,10 @@ class Search extends Component {
 
 
         </form>
-        {this.state.restaurantArray}
-
+        <div>
+          {this.state.poweredlogo}
+          {this.state.restaurantTableRender}
+        </div>
       </div>
     );
   }
@@ -137,7 +135,7 @@ fetchData = () => {
       const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/';
       fetch(`${URL}name/${this.state.location}`).then(response => response.json())
         .then((data) => {
-          const restaurantArray = data.response.groups[0].items.map(restaurant =>
+          const restaurantTableRender = data.response.groups[0].items.map(restaurant =>
           // console.log(restaurant.venue.name)
             (
               <div>
@@ -159,6 +157,6 @@ fetchData = () => {
               </div>
             ),
           );
-          parent.setState({ names: restaurantArray, poweredlogo: <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right" /> });
+          parent.setState({ names: restaurantTableRender, poweredlogo: <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right" /> });
         });
     } */
