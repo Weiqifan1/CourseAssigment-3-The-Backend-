@@ -37,7 +37,6 @@ public class RemoteServerEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public String getByType(@PathParam("lokationAndType") String lokationAndType) throws IOException {
         
-       
         String output = get4SquareCategoriesLocation(lokationAndType);
         return output;
     }
@@ -84,8 +83,13 @@ public class RemoteServerEndpoint {
 
     public static String get4SquareByLokationAndCategory(String location, String category) throws MalformedURLException, IOException {
         String urlInput = FSVenURL + "explore" + "?near=" + location + "&section='food'" + "&query=" + category + clientAut;
+        
         return jsonResponse(urlInput);
 
+    }
+    public static String get4SquareByVenueId(String venueId){
+        String urlInput=FSVenURL+venueId;
+        return urlInput;
     }
 
     //documentation: https://developer.foursquare.com/docs/api/venues/explore
@@ -198,6 +202,6 @@ public class RemoteServerEndpoint {
 //        System.out.println(getValueFromServer("https://swapi.co/
 ////////////////    System.out.println (get4SquareByLokation("koge"));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
-        System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=fastfood"));
+        System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=family"));
     }
     }

@@ -122,7 +122,7 @@ public class GoogleAPI {
 //        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
 //        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 //        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
- System.out.println(getplaceByTextSearch("mac donalds in copenhagen"));
+ System.out.println(getplaceByTextSearch("fastfood koge"));
     }
 
 }
