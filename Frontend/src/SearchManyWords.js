@@ -39,22 +39,24 @@ class Search extends Component {
         response.json(),
       )
         .then((data) => {
+          console.log(data);
+
           const restaurantArray = data.results.map(restaurant =>
 
             (
 
               <div>
-
+                <img src={Powered_by_Foursquare_black_300} alt="p4s" width="200" align="right" />
                 <table className="table">
                   <thead>
-                    {/* <tr><th></th><th>Restaurant</th><th>Rating</th><th>Address</th><th>Home Page</th><th>Price Range</th><th>Reviews</th></tr> */}
+                    <tr><th /><th>Logo</th><th>Restaurant</th><th>Rating</th><th>Address</th><th>Home Page</th><th>Price Range</th><th>Reviews</th></tr>
                   </thead>
                   <tbody>
                     <tr key={restaurant.id}>
-                      <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=5000&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0`} height="75" alt="noimage" /></td>
-                      <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
-                      <td>Rating{restaurant.rating}</td>
-                      <td />
+                      <td><img src={Logo_black} alt="Logo" width="20" /></td>
+                      <td>{restaurant.name}</td>
+                      <td>{restaurant.rating}</td>
+                      <td>{restaurant.formatted_address}</td>
 
                     </tr>
 
@@ -96,4 +98,3 @@ class Search extends Component {
 }
 
 export default Search;
-

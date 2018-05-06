@@ -7,16 +7,16 @@ function handleHttpErrors(res) {
   return res.json();
 }
 
-const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/name/';
+const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
 
-class FoursquareFacade {
+class GoogleFacade {
     /* handleData = (data, callback) => {
       let restaurants = [];
       restaurants = data.response.groups[0].items;
       callback(restaurants);
     } */
 
-    fetchRestaurantsByLocation = (location) => { // , callback
+    fetchRestaurantsByQuery = (location) => { // , callback
       console.log(location);
       fetch(URL + location)
 
@@ -28,7 +28,7 @@ class FoursquareFacade {
         })
         .then((data) => {
           let restaurants = [];
-          restaurants = data.response.groups[0].items;
+          restaurants = data.results;
           this.setRestaurantsByLocation(restaurants);
           // callback(restaurants);
         });
@@ -38,17 +38,13 @@ class FoursquareFacade {
           localStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
         };
 
-<<<<<<< HEAD
-        getRestaurantsByLocation = () => localStorage.getItem('restaurantsByLocation') // Is the same as the 3 lines below.
-=======
         getRestaurantsByLocation = () => JSON.parse(localStorage.getItem('restaurantsByLocation')); // Is the same as the 3 lines below.
->>>>>>> 4d797b68daf66ca3caf08084c636c4d07ce1f2ff
 
   /* getToken = () => {
               return localStorage.getItem('jwtToken')
           } */
 }
 
-const fourfacade = new FoursquareFacade();
+const googlefacade = new GoogleFacade();
 
-export default fourfacade;
+export default googlefacade;

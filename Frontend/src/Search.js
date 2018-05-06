@@ -11,18 +11,17 @@ class Search extends Component {
     super(props);
 
     this.state = {
-      location: '', type: '', restaurants: '', poweredlogo: '',
+      location: '',
+      restaurants: [],
     };
-    this.someAction = this.someAction.bind(this);
   }
 
 
     onSubmit = async (evt) => {
-      const parent = this;
       evt.preventDefault();
       await FoursquareFacade.fetchRestaurantsByLocation(this.state.location);
       FoursquareFacade.getRestaurantsByLocation();
-      parent.setState({ restaurants: FoursquareFacade.getRestaurantsByLocation() });
+      this.setState({ restaurants: FoursquareFacade.getRestaurantsByLocation() });
       // console.log(this.state.restaurants);
     }
 
@@ -30,36 +29,37 @@ class Search extends Component {
       console.log(evt.target.value);
       this.setState({ [evt.target.id]: evt.target.value });
     }
-    someAction(evt) {
-      this.setState({ restaurants: 'recent' });
-    }
 
     render() {
       const data = this.state.restaurants;
-      console.log(data);
+
 
       const restaurantTable = data.map(restaurant =>
       // console.log(restaurant.venue.name)
+
         (
+
           <div>
+
             <table className="table">
-              <thead>
-                <tr><th /><th>Logo</th><th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
-              </thead>
+              <thead />
               <tbody>
                 <tr key={restaurant.venue.id}>
                   <td><img src={Logo_black} alt="Logo" width="20" /></td>
-                  <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td>
+                  {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
                   <td>{restaurant.venue.name}</td>
                   <td>{restaurant.venue.categories[0].name}</td>
                   <td>{restaurant.venue.location.address}</td>
                   <td>{restaurant.reasons.items[0].summary}</td>
+
                 </tr>
+
               </tbody>
             </table>
           </div>
         ),
       );
+
       return (
         <div>
 
@@ -76,7 +76,9 @@ class Search extends Component {
             </div>
 
             <div>
-              {/* {restaurantTable} */}
+              {/* Comment */}
+              {restaurantTable}
+
 
             </div>
 
