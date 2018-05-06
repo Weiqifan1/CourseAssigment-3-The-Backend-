@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-import UserSearchResult from './UserSearchResult';
 import LoginAs from './LoginAs';
 import Search from './Search';
 import SearchManyWords from './SearchManyWords';
 import SearchGoogle from './SearchGoogle';
-// import RestaurantsSearchResult from './RestaurantsSearchResult'
+
 class Home extends Component {
   render() {
     return (

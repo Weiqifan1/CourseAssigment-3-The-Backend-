@@ -4,7 +4,6 @@ const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplace
 
 class GoogleFacade {
     fetchRestaurantsByQuery = (location) => { // , callback
-      console.log(location);
       fetch(URL + location)
 
         .then(async (results) => {

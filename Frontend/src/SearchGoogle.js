@@ -33,7 +33,7 @@ class SearchGoogle extends Component {
             <thead />
             <tbody>
               <tr key={restaurant.id}>
-                <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=5000&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0`} height="75" alt="noimage" /></td>
+                <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0`} height="75" alt="noimage" /></td>
                 <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
                 <td>Rating{restaurant.rating}</td>
                 <td />
@@ -48,7 +48,7 @@ class SearchGoogle extends Component {
 
     this.setState({ restaurantTable: restaurantArray });
   };
-  someAction(evt) {
+  someAction(event) {
     this.setState({ restaurants: ['fem'] });
   }
 
