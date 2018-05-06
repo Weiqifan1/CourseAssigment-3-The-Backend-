@@ -12,7 +12,7 @@ class Search extends Component {
 
     this.state = {
       location: '',
-      restaurants: '',
+      restaurants: [],
     };
   }
 
@@ -34,7 +34,7 @@ class Search extends Component {
       const data = this.state.restaurants;
       console.log(data);
 
-      /* const restaurantTable = data.response.groups[0].items.map(restaurant =>
+      const restaurantTable = data.map(restaurant =>
       // console.log(restaurant.venue.name)
 
         (
@@ -43,12 +43,12 @@ class Search extends Component {
 
             <table className="table">
               <thead>
-                <tr><th /><th>Logo</th><th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
+                <tr><th />{/* <th>Logo</th> */}<th>Restaurant</th><th>Type</th><th>Address</th><th>Popularity</th></tr>
               </thead>
               <tbody>
                 <tr key={restaurant.venue.id}>
                   <td><img src={Logo_black} alt="Logo" width="20" /></td>
-                  <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td>
+                  {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
                   <td>{restaurant.venue.name}</td>
                   <td>{restaurant.venue.categories[0].name}</td>
                   <td>{restaurant.venue.location.address}</td>
@@ -60,7 +60,7 @@ class Search extends Component {
             </table>
           </div>
         ),
-      ); */
+      );
 
       return (
         <div>
@@ -78,7 +78,9 @@ class Search extends Component {
             </div>
 
             <div>
-              {/* {restaurantTable} */}
+              {/* Comment */}
+              {restaurantTable}
+
 
             </div>
 
