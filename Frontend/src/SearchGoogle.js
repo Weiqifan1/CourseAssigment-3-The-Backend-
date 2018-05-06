@@ -35,7 +35,7 @@ class SearchGoogle extends Component {
               <tr key={restaurant.id}>
                 <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0`} height="75" alt="noimage" /></td>
                 <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
-                <td>Rating{restaurant.rating}</td>
+                <td>Rating: {restaurant.rating}</td>
                 <td />
 
               </tr>
