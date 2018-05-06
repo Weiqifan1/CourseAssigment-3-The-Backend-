@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 
-//Three unfoldable menus where the user can filter the restaurants that showed up in the search.
+// Three unfoldable menus where the user can filter the restaurants that showed up in the search.
 export default class foodType extends Component {
-    
-    render() {
-        
-        return (
+  render() {
+    return (
 
-            <form>
+      <form>
 
                 Choose :
-             
+
                 Fastfood
-                    <input id="checkBox" type="checkbox" name="fastfood" />
+        <input id="type" type="checkbox" value="fastfood" name="fastfood" />
                 Family
-                    <input id="checkBox" type="checkbox" name="family" />
+        <input id="type" type="checkbox" value="family" name="family" />
                 Local
-                    <input id="checkBox" type="checkbox" name="local" />
+        <input id="type" type="checkbox" value="local" name="local" />
                 Gourmet
-                    <input id="checkBox" type="checkbox" name="gourmet" />
+        <input id="type" type="checkbox" value="gourmet" name="gourmet" />
                 Asian
-                    <input id="checkBox" type="checkbox" name="asian" />
-            </form>
-        )
-    }
+        <input id="type" type="checkbox" value="asian" name="asian" />
+      </form>
+    );
+  }
 }

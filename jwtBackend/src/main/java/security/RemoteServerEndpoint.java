@@ -32,6 +32,16 @@ public class RemoteServerEndpoint {
         return output;
     }
 
+     @GET
+    @Path("locationtype/{lokationAndType}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getByType(@PathParam("lokationAndType") String lokationAndType) throws IOException {
+        
+       
+        String output = get4SquareCategoriesLocation(lokationAndType);
+        return output;
+    }
+    
     @GET
     @Path("ll/{ll}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -112,6 +122,15 @@ public class RemoteServerEndpoint {
     //documentation: https://developer.foursquare.com/docs/api/venues/categories
     // returns a hieracichal list of categories applied to venues. 
     // (inkludere alle slags venues, ikke kun mad)
+    public static String get4SquareCategoriesLocation(String locationtype ) throws MalformedURLException, IOException {
+        String urlInput = FSVenURL + "search"+ "?near=" + locationtype
+                + clientAut;//+ "?section='food'";//+ clientAut;//section='food'
+        return jsonResponse(urlInput);
+    }
+
+    //documentation: https://developer.foursquare.com/docs/api/venues/categories
+    // returns a hieracichal list of categories applied to venues. 
+    // (inkludere alle slags venues, ikke kun mad)
     public static String get4SquareCategories() throws MalformedURLException, IOException {
         String urlInput = FSVenURL + "categories" + "?" + clientAut;//+ "?section='food'";//+ clientAut;//section='food'
         return jsonResponse(urlInput);
@@ -177,8 +196,8 @@ public class RemoteServerEndpoint {
 //        System.out.println("swapi test");
 //       // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
 //        System.out.println(getValueFromServer("https://swapi.co/
-    System.out.println (get4SquareByLokation("koge"));
+////////////////    System.out.println (get4SquareByLokation("koge"));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
-        //System.out.println(get4SquareCategories());
+        System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=fastfood"));
     }
     }

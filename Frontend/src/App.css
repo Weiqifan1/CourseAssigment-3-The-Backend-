@@ -50,3 +50,7 @@
   margin-right: auto;
   width: 100px;
 }
+.table{
+  justify-content: flex-start;
+
+}

@@ -1,23 +1,9 @@
 
-function handleHttpErrors(res) {
-  if (!res.ok) {
-    throw { message: res.statusText, status: res.status };
-  }
 
-  return res.json();
-}
+const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
 
-const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/name/';
-
-class FoursquareFacade {
-    /* handleData = (data, callback) => {
-      let restaurants = [];
-      restaurants = data.response.groups[0].items;
-      callback(restaurants);
-    } */
-
-    fetchRestaurantsByLocation = (location) => { // , callback
-      console.log(location);
+class GoogleFacade {
+    fetchRestaurantsByQuery = (location) => { // , callback
       fetch(URL + location)
 
         .then(async (results) => {
@@ -28,7 +14,7 @@ class FoursquareFacade {
         })
         .then((data) => {
           let restaurants = [];
-          restaurants = data.response.groups[0].items;
+          restaurants = data.results;
           this.setRestaurantsByLocation(restaurants);
           // callback(restaurants);
         });
@@ -39,12 +25,8 @@ class FoursquareFacade {
         };
 
         getRestaurantsByLocation = () => JSON.parse(localStorage.getItem('restaurantsByLocation')); // Is the same as the 3 lines below.
-
-  /* getToken = () => {
-              return localStorage.getItem('jwtToken')
-          } */
 }
 
-const fourfacade = new FoursquareFacade();
+const googlefacade = new GoogleFacade();
 
-export default fourfacade;
+export default googlefacade;

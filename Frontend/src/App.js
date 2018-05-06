@@ -67,7 +67,7 @@ class App extends Component {
 
         </HashRouter>
 
-        {!this.state.loggedIn ? (<LogIn id="2" login={this.login} />) :
+        {!this.state.loggedIn===true ? (<LogIn id="2" login={this.login} />) :
 
           (<div>
             <button onClick={this.logout}>Logout</button>
