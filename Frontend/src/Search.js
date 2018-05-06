@@ -13,86 +13,79 @@ class Search extends Component {
     this.state = {
       location: '',
       restaurants: [],
+      restaurantArray: '',
     };
   }
 
 
-    onSubmit = async (evt) => {
-      evt.preventDefault();
-      await FoursquareFacade.fetchRestaurantsByLocation(this.state.location);
-      FoursquareFacade.getRestaurantsByLocation();
-      this.setState({ restaurants: FoursquareFacade.getRestaurantsByLocation() });
-      // console.log(this.state.restaurants);
-    }
-
-    onChange = (evt) => {
-      console.log(evt.target.value);
-      this.setState({ [evt.target.id]: evt.target.value });
-    }
-
-    render() {
-      const data = this.state.restaurants;
-
-
-      const restaurantTable = data.map(restaurant =>
+  onChange = (evt) => {
+    console.log(evt.target.value);
+    this.setState({ [evt.target.id]: evt.target.value });
+  }
+  onSubmit = async (evt) => {
+    evt.preventDefault();
+    await FoursquareFacade.fetchRestaurantsByLocation(this.state.location);
+    FoursquareFacade.getRestaurantsByLocation();
+    this.setState({ restaurants: FoursquareFacade.getRestaurantsByLocation() });
+    // console.log(this.state.restaurants);
+    const restaurantTable = this.state.restaurants.map(restaurant =>
       // console.log(restaurant.venue.name)
 
-        (
+      (
 
-          <div>
-
-            <table className="table">
-              <thead />
-              <tbody>
-                <tr key={restaurant.venue.id}>
-                  <td><img src={Logo_black} alt="Logo" width="20" /></td>
-                  {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
-                  <td>{restaurant.venue.name}</td>
-                  <td>{restaurant.venue.categories[0].name}</td>
-                  <td>{restaurant.venue.location.address}</td>
-                  <td>{restaurant.reasons.items[0].summary}</td>
-
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-        ),
-      );
-
-      return (
         <div>
 
-          <form onSubmit={this.onSubmit} onChange={this.onChange} >
-            <div id="search">
-              <input placeholder="Location" id="location" />
-              <button id="8">search</button>
-            </div>
+          <table className="table">
+            <thead>
+              <tr><img src={Powered_by_Foursquare_black_300} alt="Logo" width="20" /></tr>
+            </thead>
+            <tbody>
+            <tr key={restaurant.venue.id}>
+              <td><img src={Logo_black} alt="Logo" width="20" /></td>
+              {/* <td><img src={restaurant.venue.categories[0].icon.prefix + restaurant.venue.categories[0].icon.suffix} alt="Logo" width="20" /></td> */}
+              <td>{restaurant.venue.name}</td>
+              <td>{restaurant.venue.categories[0].name}</td>
+              <td>{restaurant.venue.location.address}</td>
+              <td>{restaurant.reasons.items[0].summary}</td>
 
-            <div className="container">
-              <CheckboxForFoodTypes id="3" />
-              {/* <RestaurantsSearchResult id="5u" /> */}
+            </tr>
+          </tbody>
+          </table>
+        </div >
+      ),
+    );
 
-            </div>
-
-            <div>
-              {/* Comment */}
-              {restaurantTable}
-
-
-            </div>
-
-            <div>
-
-              <p>{this.state.location}</p>
-              <p>{this.state.arr}</p>
-            </div>
-          </form>
+    this.setState({ restaurantArray: restaurantTable });
+  };
 
 
-        </div>
-      );
-    }
+  render() {
+    const data = this.state.restaurants;
+    console.log(data);
+
+
+    return (
+      <div>
+
+        <form onSubmit={this.onSubmit} onChange={this.onChange} >
+          <div id="search">
+            <input placeholder="Location" id="location" />
+            <button id="8">search</button>
+          </div>
+
+          <div className="container">
+            <CheckboxForFoodTypes id="3" />
+
+
+          </div>
+
+
+        </form>
+        {this.state.restaurantArray}
+
+      </div>
+    );
+  }
 }
 
 export default Search;

@@ -12,7 +12,7 @@ class Home extends Component {
       <div>
         <h2>Home</h2>
         <Search />
-        <p3>Search eks. mcdonalds in copenhagen</p3>
+        <h6>Search eks. mcdonalds in copenhagen</h6>
         <SearchGoogle />
 
         <LoginAs />
