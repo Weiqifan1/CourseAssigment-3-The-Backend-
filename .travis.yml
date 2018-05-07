@@ -2,11 +2,4 @@ language: java
 jdk: oraclejdk8
 before_script:
 - cd jwtBackend
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: C72IKpXfKCStHMo2fvOeuA
-  local_dir: build
-  on:
-branch: master
 
