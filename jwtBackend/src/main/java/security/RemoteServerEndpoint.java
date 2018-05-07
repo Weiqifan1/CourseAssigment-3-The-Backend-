@@ -47,7 +47,6 @@ public class RemoteServerEndpoint {
         String output = get4SquareByCoordinatesAsString(ll);
         return output;
     }
-
 //   
 //   //hvis man vil lave en query på bestemt slags mad &query="sushi"
 //    public static String getRemoteData4SquareByLokation(String lokation ) throws MalformedURLException, IOException{
