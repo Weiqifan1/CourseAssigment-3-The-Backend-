@@ -11,10 +11,11 @@ class Search extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { location: '', names: '' };
+    this.state = {
+      location: '', type: 'notype', restaurants: '', poweredlogo: '',
+    };
     this.someAction = this.someAction.bind(this);
   }
-
   onSearch = async (evt) => {
     //     evt.preventDefault();
     //   var  kanin =  await this.fetchData(this.state.location, doesStuffToKaninAndRendersIt)
