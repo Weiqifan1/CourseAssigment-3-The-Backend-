@@ -41,8 +41,9 @@ public class GoogleAPI {
 
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
     private static final String StandardRadius = "&radius=500";
-//  private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0"; //Bos
- private static final String UrlKey = "AIzaSyDr5OFAHNYW2AdC2R8hqd3vH6QzirUkeNg"; // benediktes
+//  private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0"; //Bos gamle
+ private static final String UrlKey = "AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM"; // Bos nye
+    //private static final String UrlKey = "AIzaSyDr5OFAHNYW2AdC2R8hqd3vH6QzirUkeNg"; // benediktes
     
     private static final String URLexample = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0";
     private static final String USER_AGENT = "Mozilla/5.0";
@@ -86,7 +87,11 @@ public class GoogleAPI {
 
     private static String getGoogleStreetByCoor(String googleJSON) {
         String firstWork = regexBetwTags(googleJSON, "rating(.*)vicinity", "\"");
+        //System.out.println("json: ");
+        //System.out.println(googleJSON);
+        //String firstWork = regexBetwTags(googleJSON, "results(.*)geometry", "\"");
         firstWork = regexBetwTags(firstWork, "vicinity", "}");
+        //firstWork = regexBetwTags(firstWork, "formatted_address", ",");
         String secondWork = firstWork.substring(3);
         secondWork = secondWork.trim();
         secondWork = secondWork.substring(1, secondWork.length() - 1);
@@ -123,8 +128,11 @@ public class GoogleAPI {
     public static void main(String[] args) throws IOException {
 //        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
 //        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
-//        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
- System.out.println(getplaceByTextSearch("fastfood koge"));
+        //System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
+        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("55.771770,12.503819")));
+        
+        
+        //System.out.println(getplaceByTextSearch("fastfood koge"));
     }
 
 }
