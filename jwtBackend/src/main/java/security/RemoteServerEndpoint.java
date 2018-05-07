@@ -36,7 +36,6 @@ public class RemoteServerEndpoint {
     @Path("locationtype/{lokationAndType}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getByType(@PathParam("lokationAndType") String lokationAndType) throws IOException {
-        
         String output = get4SquareCategoriesLocation(lokationAndType);
         return output;
     }
