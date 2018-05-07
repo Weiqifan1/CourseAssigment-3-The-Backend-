@@ -1,4 +1,4 @@
-language: java
+language: javascript
 jdk: oraclejdk8
 deploy:
   provider: pages
