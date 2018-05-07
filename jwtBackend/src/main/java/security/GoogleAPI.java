@@ -49,7 +49,7 @@ public class GoogleAPI {
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String TextSerarchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json";
     
-    
+    //google autocomplete endpoint https://maps.googleapis.com/maps/api/place/autocomplete/output?parameters
     private static String getplaceByTextSearch(String search) throws IOException {
         String trim = search.replace(" ", "+").trim();
         System.out.println(trim);
