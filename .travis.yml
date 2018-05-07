@@ -5,7 +5,7 @@ before_script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github-token: chr20180425
+  github-token: GITHUB_TOKEN
   local_dir: build
   on:
     branch: master
