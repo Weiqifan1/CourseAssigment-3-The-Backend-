@@ -10,4 +10,5 @@
 Have fun :sunglasses:
 
 
-link to webapp on github pages : https://weiqifan1.github.io/sem3pro/Frontend/ 
+link to webapp on github pages : https://weiqifan1.github.io/sem3pro/Frontend/public
+
