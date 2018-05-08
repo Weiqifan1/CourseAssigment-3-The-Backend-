@@ -2,6 +2,8 @@ language: java
 jdk: oraclejdk8
 before_script:
 - cd jwtBackend
+before deploy:
+- cd Frontend
 
 deploy:
   provider: pages
