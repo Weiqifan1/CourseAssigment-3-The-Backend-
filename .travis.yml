@@ -5,7 +5,7 @@ before_script:
 
 deploy:
   provider: pages
-  localdir: Frontend
+  local-dir: Frontend
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
