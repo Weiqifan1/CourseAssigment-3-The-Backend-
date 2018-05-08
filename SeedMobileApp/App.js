@@ -6,6 +6,7 @@ import FetchExample from './NetWorking';
 import Login from './Login'
 import LoggedIn from './Login'
 import facade from "./AppFacade";
+import SearchRestaurant from './SearchRestaurant';
 
 
 const Touchable = (props) => (
@@ -25,7 +26,8 @@ class HomeScreen extends React.Component {
         <Text style={{ textAlign: "center", fontSize: 20 }}>Welcome </Text> 
         <Text style={{ textAlign: "center", fontSize: 16 }}>to Start mobile app for the DataBuilders seed</Text> 
         <Touchable onPress={() => navigate('HomeScreen')} title="Home" />
-        <Touchable onPress={() => navigate('FetchExample')} title="NetWorking" />
+        {/* <Touchable onPress={() => navigate('FetchExample')} title="NetWorking" /> */}
+        <Touchable onPress={() => navigate('SearchRestaurant')} title="Search Restaurant" />
         <Touchable onPress={()=> navigate('Login')} title="Login" />
         <Image source={require('./starwars-theme.jpg')} style={height = undefined } />
     </ScrollView>
@@ -37,6 +39,7 @@ export default App = () => <RouteStack style={{ marginTop: Platform.OS === 'ios'
 const RouteStack = StackNavigator({
 Home: { screen: HomeScreen },
 FetchExample: {screen: FetchExample},
+SearchRestaurant: {screen: SearchRestaurant},
 Login: {screen: Login},
 LoggedIn: {screen: LoggedIn},
 

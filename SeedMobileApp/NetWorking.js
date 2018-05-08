@@ -8,7 +8,7 @@ export default class FetchExample extends React.Component {
     this.state ={ isLoading: true}
   }
 
-  componentDidMount(){
+  /* componentDidMount(){
     return fetch('https://benedikteeva.dk/jwtBackend-1.0-SNAPSHOT/api/remote/people?=results')
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +24,7 @@ export default class FetchExample extends React.Component {
       .catch((error) =>{
 
       });
-  }
+  } */
 
 
   render(){
