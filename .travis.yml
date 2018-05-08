@@ -5,9 +5,9 @@ before_script:
 
 deploy:
   provider: pages
-  localdit: Frontend
+  localdir: Frontend
   skip-cleanup: true
-  github-token: $NEW_TOKEN
+  github-token: $GITHUB_TOKEN
   keep-history: true
   on:
     branch: master
