@@ -5,6 +5,7 @@ before_script:
 
 deploy:
   provider: pages
+  localdit: Frontend
   skip-cleanup: true
   github-token: $NEW_TOKEN
   keep-history: true
