@@ -6,7 +6,7 @@ before_script:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: 10d989b98a92cce9183ee8689891336bc18d29d5
+  github-token: chrsem320180508
   keep-history: true
   on:
     branch: master
