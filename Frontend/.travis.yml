@@ -1,2 +1,10 @@
-language: java
+language: javascript
 jdk: oraclejdk8
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $NEW_TOKEN
+  keep-history: true
+  on:
+branch: master
