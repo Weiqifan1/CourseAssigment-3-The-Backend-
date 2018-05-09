@@ -43,7 +43,32 @@ class FoursquareFacade {
   /* getToken = () => {
               return localStorage.getItem('jwtToken')
           } */
+
+          fetchRestaurantsByLocationandType = (lokationAndType) => { // , callback
+            console.log(lokationAndType);
+            fetch(URL + lokationAndType)
+
+              .then(async (results) => {
+                if (!results.ok) {
+                  throw Error(results.statusText);
+                }
+                return results.json();
+              })
+              .then((data) => {
+                let restaurants = [];
+                restaurants = data.response.groups[0].items;
+                this.setRestaurantsByLocationandType(restaurants);
+                // callback(restaurants);
+              });
+          }
+
+          setRestaurantsByLocationandType = (responseFromFetch) => {
+            localStorage.setItem('restaurantsByLocationandType', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
+          };
+
+          getRestaurantsByLocationandType = () => JSON.parse(localStorage.getItem('restaurantsByLocationandType')); // Is the same as the 3 lines below.
 }
+
 
 const fourfacade = new FoursquareFacade();
 
