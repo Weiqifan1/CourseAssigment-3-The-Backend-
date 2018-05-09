@@ -192,14 +192,14 @@ public class RemoteServerEndpoint {
 //     
 //        System.out.println("Chr test...");
 //        System.out.println(get4SquareByCoordinates(55.46, 12.30, 250));
-//        System.out.println(get4SquareByLokation("nyc"));
-        System.out.println("Benedikte test");
+        System.out.println(get4SquareByLokation("roskilde"));
+        //System.out.println("Benedikte test");
 //        System.out.println(get4SquareByCoordinatesAsString("55.45,12.30"));n {
 //        System.out.println("swapi test");
 //       // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
 //        System.out.println(getValueFromServer("https://swapi.co/
 ////////////////    System.out.println (get4SquareByLokation("koge"));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
-        System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=family"));
+        //System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=family"));
     }
     }

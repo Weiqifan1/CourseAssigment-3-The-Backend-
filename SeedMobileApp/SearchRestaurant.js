@@ -3,7 +3,7 @@ import { Platform, Text, View, StyleSheet } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
 
 // Se mere her https://docs.expo.io/versions/v27.0.0/sdk/location
-//
+
 
 class className extends Component {
     state = {
@@ -35,13 +35,17 @@ class className extends Component {
 
     render() {
         let text = 'Waiting..';
-        let latitudet;
+        let latitude;
         let longitude;
+        let latlng;
+
         if (this.state.errorMessage) {
             text = this.state.errorMessage;
         } else if (this.state.location) {
-            latitudet = this.state.location.coords.latitude;
+            latitude = this.state.location.coords.latitude;
             longitude = this.state.location.coords.longitude;
+            latlng = latitude + "," + longitude;
+
             text = JSON.stringify(this.state.location);
         }
 
@@ -49,8 +53,9 @@ class className extends Component {
             <View style={styles.container}>
                 <Text>Søg efter en restaurant ud fra din lokation</Text>
                 <Text style={styles.paragraph}>{text}</Text>
-                <Text style={styles.paragraph}>Latitude: {latitudet}</Text>
+                <Text style={styles.paragraph}>Latitude: {latitude}</Text>
                 <Text style={styles.paragraph}>Longtitude: {longitude}</Text>
+                <Text style={styles.paragraph}>Longtitude and Longtitude: {latlng}</Text>
             </View>
         );
     }

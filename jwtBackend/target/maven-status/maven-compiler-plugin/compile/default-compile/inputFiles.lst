@@ -1,21 +1,21 @@
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\exceptions\AuthenticationException.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\SharedSecret.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\utils\SetupTestUsers.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\JWTAuthenticationFilter.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\UserPrincipal.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\UserFacade.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\ErrorEndpoint.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\StatisticsFacade.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\rest\ApplicationConfig.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\GoogleAPI.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\cors\CorsRequestFilter.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\JWTSecurityContext.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\exceptions\NotFoundException.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\RemoteServerEndpoint.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\cors\CorsResponseFilter.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\exceptions\GenericExceptionMapper.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\rest\DemoResource.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\LoginEndpoint.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\Role.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\entity\User.java
-C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro\jwtBackend\src\main\java\security\Error.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\entity\Role.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\exceptions\NotFoundException.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\rest\DemoResource.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\exceptions\AuthenticationException.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\ErrorEndpoint.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\JWTSecurityContext.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\LoginEndpoint.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\entity\User.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\entity\UserFacade.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\Error.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\cors\CorsRequestFilter.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\JWTAuthenticationFilter.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\rest\ApplicationConfig.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\utils\SetupTestUsers.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\UserPrincipal.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\GoogleAPI.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\cors\CorsResponseFilter.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\entity\StatisticsFacade.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\SharedSecret.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\exceptions\GenericExceptionMapper.java
+C:\Users\Bo\nativesem\sem3pro\jwtBackend\src\main\java\security\RemoteServerEndpoint.java
