@@ -1,6 +1,5 @@
-language: javascript
-jdk: oraclejdk8
-
+language: node_js
+node_js: node
 
 deploy:
   provider: pages
