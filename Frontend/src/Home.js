@@ -8,14 +8,16 @@ import SearchWithType from './FoursquareSearchWithType';
 
 class Home extends Component {
   render() {
-    console.log(`log${process.env.PUBLIC_URL}`);
     return (
       <div>
         <h2>Home</h2>
-        {/* Search 4Square: <Search /> */}
-       Search with type 4Square:  <SearchWithType />
+        <h6>Search with type 4Square:  </h6>
+        <SearchWithType />
+        <hr id="line1" />
         <h6>Search eks. mcdonalds in copenhagen</h6>
-       Search many words google  <SearchGoogle />
+        <SearchGoogle />
+        <hr id="line2" />
+        <h6>Autocomplete</h6>
         <LocationSearchInput />
         <LoginAs />
 
