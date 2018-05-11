@@ -7,10 +7,10 @@
     "amber": "^0.21.1",
     "bootstrap": "^4.1.0",
     "build": "^0.1.4",
-    "ember": "^1.0.3",
     "jwt-decode": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-places-autocomplete": "^7.1.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "reactstrap": "^5.0.0",
@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
-    "deploy":"gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

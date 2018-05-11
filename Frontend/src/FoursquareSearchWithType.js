@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-import UserSearchResult from './UserSearchResult';
+
 import Logo_black from './images/Logo_black.jpg';
 import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png';
 // import RestaurantsSearchResult from './RestaurantsSearchResult'
@@ -23,10 +23,7 @@ class SearchWithType extends Component {
     this.setState({ [evt.target.id]: evt.target.value });
   }
 
-  onSearch = async (evt) => {
-    //     evt.preventDefault();
-    //   var  kanin =  await this.fetchData(this.state.location, doesStuffToKaninAndRendersIt)
-  }
+
   fetchData = () => {
     console.log(this.state.type);
     const parent = this; // her tager vi det ydre scopes this og sætter som variabel dermed kan ændringer føres ud af den indre funktion
@@ -109,6 +106,8 @@ class SearchWithType extends Component {
       <div>
 
         <form onSubmit={this.fetchData} onChange={this.onChange} >
+          <CheckboxForFoodTypes id="3" />
+
           <div id="search">
             <input placeholder="Location" id="location" />
             <button id="8">search</button>
@@ -116,7 +115,6 @@ class SearchWithType extends Component {
 
           <div className="container">
             <p />
-            <CheckboxForFoodTypes id="3" />
           </div>
         </form>
 

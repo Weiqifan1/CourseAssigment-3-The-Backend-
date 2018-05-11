@@ -7,12 +7,14 @@ class SearchGoogle extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { location: '', restaurants: [], restaurantTable: '' };
+    this.state = {
+      location: '', restaurants: [], restaurantTable: '', errormessage: '',
+    };
     this.someAction = this.someAction.bind(this);
   }
 
 
-  onChange = (evt) => {
+  onChange =async (evt) => {
     this.setState({ [evt.target.id]: evt.target.value });
   }
 
@@ -20,10 +22,12 @@ class SearchGoogle extends Component {
   onSubmit = async (evt) => {
     evt.preventDefault();
     await GoogleFacade.fetchRestaurantsByQuery(this.state.location);
-    GoogleFacade.getRestaurantsByLocation();
-    this.setState({ restaurants: GoogleFacade.getRestaurantsByLocation() });
 
+    const restaurantsResult = GoogleFacade.getRestaurantsByLocation();
 
+    this.setState({ restaurants: restaurantsResult });
+
+    console.log(this.state.restaurants);
     const restaurantArray = this.state.restaurants.map(restaurant =>
       (
 
@@ -57,17 +61,15 @@ class SearchGoogle extends Component {
       <div>
 
         <form onSubmit={this.onSubmit} onChange={this.onChange} >
+          <CheckboxForFoodTypes id="3" />
           <div id="search">
             <input placeholder="Location" id="location" />
             <button id="8">search</button>
           </div>
 
-          <div className="container">
-            <CheckboxForFoodTypes id="3" />
-
-
-          </div>
+          <div className="container" />
         </form>
+
 
         <div>  {this.state.restaurantTable}   </div>
 
