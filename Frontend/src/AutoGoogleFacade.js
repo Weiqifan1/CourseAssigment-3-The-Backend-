@@ -1,5 +1,4 @@
 
-import PlacesAutocomplete from 'react-places-autocomplete';
 
 const baseURL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/';
 const latlngURL = 'api/googleplaces/latlgt/';
