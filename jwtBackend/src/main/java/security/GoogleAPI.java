@@ -5,12 +5,6 @@
  */
 package security;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.BufferedReader;
@@ -46,7 +40,7 @@ public class GoogleAPI {
         return outPut;
 }
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-    private static final String StandardRadius = "&radius=2000
+    private static final String StandardRadius = "&radius=2000";
 //  private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0"; //Bos
 // private static final String UrlKey = "AIzaSyDr5OFAHNYW2AdC2R8hqd3vH6QzirUkeNg"; // benediktes
  private static final String UrlKey= "AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM";
@@ -151,5 +145,4 @@ public class GoogleAPI {
     }
 
 }
-
 
