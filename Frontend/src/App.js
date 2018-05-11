@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import facade from './ApiFacade';
 import { HashRouter, Route, Switch } from 'react-router-dom'; // , Redirect (For the log out method)
-import './App.css';
+import './CSStemp/App.css';
 import LogIn from './Login';
 import Home from './Home';
 import Navigation from './Navigation';
@@ -41,7 +41,6 @@ class App extends Component {
       <HashRouter basename={process.env.PUBLIC_URL}>
         <div>
 
-
           <div>
 
             <Header id="1" />
@@ -49,14 +48,14 @@ class App extends Component {
             <Navigation />
 
             <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/user_history" component={UserHistory} />
-            <Route path="/Statistics" component={Statistics} />
-            <Route path="/profile" component={UserProfile} />
-            <Route path="/users" component={Users} />
-            <Route path="/register" component={RegisterUser} />
-            <Route component={NoMatch} />
-          </Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/user_history" component={UserHistory} />
+              <Route path="/Statistics" component={Statistics} />
+              <Route path="/profile" component={UserProfile} />
+              <Route path="/users" component={Users} />
+              <Route path="/register" component={RegisterUser} />
+              <Route path="" component={NoMatch} />
+            </Switch>
           </div>
 
 
