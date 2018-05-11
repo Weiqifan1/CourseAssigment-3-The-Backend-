@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     console.log(`log${process.env.PUBLIC_URL}`);
     return (
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename="/Frontend/">
         <div>
 
           <div>
@@ -64,7 +64,7 @@ class App extends Component {
 
           (<div>
             <button onClick={this.logout}>Logout</button>
-          </div>)}
+           </div>)}
 
           <Footer id="6" />
 
