@@ -2,7 +2,7 @@
   "name": "cuisinebychoicemockup",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://weiqifan1.github.io/sem3pro/Frontend/",
+  "homepage": "https://weiqifan1.github.io/sem3pro/Frontend",
   "dependencies": {
     "amber": "^0.21.1",
     "bootstrap": "^4.1.0",
@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b TesCI -d build",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
