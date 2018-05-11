@@ -18,30 +18,31 @@ class HomeScreen extends React.Component {
   static navigationOptions = { title: 'Seed App Project' };
   render() {
     const { navigate } = this.props.navigation;
-    
+
     return (
       <ScrollView>
-    
-    
-        <Text style={{ textAlign: "center", fontSize: 20 }}>Welcome </Text> 
-        <Text style={{ textAlign: "center", fontSize: 16 }}>to Start mobile app for the DataBuilders seed</Text> 
+
+
+        <Text style={{ textAlign: "center", fontSize: 20 }}>Welcome </Text>
+        <Text style={{ textAlign: "center", fontSize: 16 }}>to Start mobile app for the DataBuilders seed</Text>
         <Touchable onPress={() => navigate('HomeScreen')} title="Home" />
         {/* <Touchable onPress={() => navigate('FetchExample')} title="NetWorking" /> */}
         <Touchable onPress={() => navigate('SearchRestaurant')} title="Search Restaurant" />
-        <Touchable onPress={()=> navigate('Login')} title="Login" />
-        <Image source={require('./starwars-theme.jpg')} style={height = undefined } />
-    </ScrollView>
+        <Touchable onPress={() => navigate('Login')} title="Login" />
+        <Image source={require('./starwars-theme.jpg')} style={height = undefined} />
+
+      </ScrollView>
     )
   }
 }
 export default App = () => <RouteStack style={{ marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight / 2 }} />
 
 const RouteStack = StackNavigator({
-Home: { screen: HomeScreen },
-FetchExample: {screen: FetchExample},
-SearchRestaurant: {screen: SearchRestaurant},
-Login: {screen: Login},
-LoggedIn: {screen: LoggedIn},
+  Home: { screen: HomeScreen },
+  FetchExample: { screen: FetchExample },
+  SearchRestaurant: { screen: SearchRestaurant },
+  Login: { screen: Login },
+  LoggedIn: { screen: LoggedIn },
 
 });
 

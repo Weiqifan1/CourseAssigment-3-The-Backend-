@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.ws.rs.GET;
+
 /**
  *
  * @author Christian
@@ -30,63 +31,63 @@ import javax.ws.rs.GET;
 @Path("googleplaces")
 
 public class GoogleAPI {
-    
+
     @GET
     @Path("/{place}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getPlaceByText(@PathParam("place") String search) throws IOException {
         String outPut = getplaceByTextSearch(search);
         return outPut;
-}
-  @GET
+    }
+
+    @GET
     @Path("/latlgt/{place}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getGooglePlaceByCoorEndpoint(@PathParam("place") String search) throws IOException {
         String outPut = getGooglePlaceByCoor(search);
         return outPut;
-}
+    }
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
     private static final String StandardRadius = "&radius=2000";
 //  private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0"; //Bos
 // private static final String UrlKey = "AIzaSyDr5OFAHNYW2AdC2R8hqd3vH6QzirUkeNg"; // benediktes
- private static final String UrlKey= "AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM";
-    
+    private static final String UrlKey = "AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM";
+
     private static final String URLexample = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&key=AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0";
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String TextSerarchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json";
-    private static final String AutoCompleteUrl  ="htps://maps.googleapis.com/maps/api/place/queryautocomplete/json";
+    private static final String AutoCompleteUrl = "htps://maps.googleapis.com/maps/api/place/queryautocomplete/json";
     //google autocomplete endpoint https://maps.googleapis.com/maps/api/place/autocomplete/output?parameters //parameters will be the input string 
-   
-    
-    private static String getAutoComplete(String input) throws IOException{
-       String trim = input.replace(" ", "+").trim();
-    System.out.println(trim);
-    
-     String location =null;
-        String requestUrl = AutoCompleteUrl+"?input="+trim +"&location="+location+"&types=establishment"+"&key=" + UrlKey;
+
+    private static String getAutoComplete(String input) throws IOException {
+        String trim = input.replace(" ", "+").trim();
+        System.out.println(trim);
+
+        String location = null;
+        String requestUrl = AutoCompleteUrl + "?input=" + trim + "&location=" + location + "&types=establishment" + "&key=" + UrlKey;
         System.out.println(requestUrl);
         return sendGET(requestUrl);
-}
-    
-    
-    
+    }
+
     private static String getplaceByTextSearch(String search) throws IOException {
         String trim = search.replace(" ", "+").trim();
         System.out.println(trim);
-        
+
         String requestUrl = TextSerarchUrl + "?query=" + trim + "&key=" + UrlKey;
         System.out.println(requestUrl);
         return sendGET(requestUrl);
-}
+    }
+
     private static String getGooglePlaceByCoorRadius(String latAndLng, int radius) throws IOException {
         String mystr
-                = UrlFirstPart + "?location=" + latAndLng + radius +"&key=" + UrlKey;
+                = UrlFirstPart + "?location=" + latAndLng + radius + "&key=" + UrlKey;
         return sendGET(mystr);
     }
 
     private static String getGooglePlaceByCoor(String latAndLng) throws IOException {
         String mystr
-                = UrlFirstPart + "?location=" + latAndLng + StandardRadius +"&type=restaurant"+ "&key=" + UrlKey;
+                = UrlFirstPart + "?location=" + latAndLng + StandardRadius + "&type=restaurant" + "&key=" + UrlKey;
+        System.out.println(mystr);
         return sendGET(mystr);
     }
 
@@ -122,8 +123,8 @@ public class GoogleAPI {
 //        con.setRequestProperty("Accept", "application/json");
         con.setRequestProperty("User-Agent", USER_AGENT);
         int responseCode = con.getResponseCode();
-       System.out.println("GET Response Code :: " + responseCode);
-        if (responseCode == HttpURLConnection.HTTP_OK ) { // success
+        System.out.println("GET Response Code :: " + responseCode);
+        if (responseCode == HttpURLConnection.HTTP_OK) { // success
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     con.getInputStream()));
             String inputLine;
@@ -144,10 +145,12 @@ public class GoogleAPI {
 
     public static void main(String[] args) throws IOException {
 //        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
-//        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
+
+        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
+
 //        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 // System.out.println(getplaceByTextSearch("fastfood koge"));
-        System.out.println(getAutoComplete("copenhagen fast"));
+        //System.out.println(getAutoComplete("copenhagen fast"));
     }
 
 }

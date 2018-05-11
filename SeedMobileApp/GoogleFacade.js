@@ -1,5 +1,7 @@
+import AsyncStorage from 'react-native';
+
 const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
-const URLCOORDINATES = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
+const URLGETRESTAURANTSBYCOORDINATES = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/latlgt/';
 
 class GoogleFacade {
 
@@ -20,10 +22,10 @@ class GoogleFacade {
             });
     }
 
-    
 
-    fetchRestaurantsByCoordinates = (location) => { // , callback
-        fetch(URL + location)
+
+    fetchRestaurantsByCoordinates = (latlng) => { // , callback
+        fetch(URLGETRESTAURANTSBYCOORDINATES + latlng)
 
             .then(async (results) => {
                 if (!results.ok) {
@@ -41,7 +43,7 @@ class GoogleFacade {
 
 
 
-    setRestaurantsByLocation = (responseFromFetch) => {
+    setRestaurantsByLocation = async (responseFromFetch) => {
         try {
             await AsyncStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
         } catch (error) {
@@ -49,7 +51,7 @@ class GoogleFacade {
         }
     };
 
-    getRestaurantsByLocation = () => JSON.parse(await AsyncStorage.getItem('restaurantsByLocation')); // Is the same as the 3 lines below.
+    getRestaurantsByLocation = async () => JSON.parse(await AsyncStorage.getItem('restaurantsByLocation'));  // Is the same as the 3 lines below.
 }
 
 const googlefacade = new GoogleFacade();
@@ -65,4 +67,16 @@ export default googlefacade;
     }
 } catch (error) {
     // Error retrieving data
+} */
+
+/* getRestaurantsByLocation = async () => {
+    try {
+        let allRestaurants = JSON.parse(await AsyncStorage.getItem('restaurantsByLocation');
+        if (allRestaurants !== null) {
+            return allRestaurants;
+        }
+    } catch (error) {
+        console.log('Error in get from asyncStorage');
+    }
+}
 } */
