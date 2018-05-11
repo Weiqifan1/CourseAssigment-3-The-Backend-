@@ -5,12 +5,6 @@
  */
 package security;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.BufferedReader;
@@ -56,7 +50,8 @@ public class GoogleAPI {
     private static final String TextSerarchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json";
     private static final String AutoCompleteUrl  ="htps://maps.googleapis.com/maps/api/place/queryautocomplete/json";
     //google autocomplete endpoint https://maps.googleapis.com/maps/api/place/autocomplete/output?parameters //parameters will be the input string 
-       
+   
+    
     private static String getAutoComplete(String input) throws IOException{
        String trim = input.replace(" ", "+").trim();
     System.out.println(trim);
@@ -86,7 +81,6 @@ public class GoogleAPI {
     private static String getGooglePlaceByCoor(String latAndLng) throws IOException {
         String mystr
                 = UrlFirstPart + "?location=" + latAndLng + StandardRadius +"&type=restaurant"+ "&key=" + UrlKey;
-        
         return sendGET(mystr);
     }
 
@@ -127,7 +121,7 @@ public class GoogleAPI {
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     con.getInputStream()));
             String inputLine;
-            StringBuilder response = new StringBuilder();
+            StringBuffer response = new StringBuffer();
 
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
@@ -143,12 +137,12 @@ public class GoogleAPI {
     }
 
     public static void main(String[] args) throws IOException {
-      System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
+//        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
 //        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 //        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 // System.out.println(getplaceByTextSearch("fastfood koge"));
-
-////////        System.out.println(getAutoComplete("copenhagen fast"));
+        System.out.println(getAutoComplete("copenhagen fast"));
     }
 
 }
+
