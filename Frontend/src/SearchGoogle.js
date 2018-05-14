@@ -9,11 +9,6 @@ class SearchGoogle extends Component {
     super(props);
 
     this.state = { location: '', restaurants: [], restaurantTable: '' };
-    this.state = { locationAndType: '', restaurants: [], restaurantTable: '' };
-    this.someAction = this.someAction.bind(this);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
@@ -86,41 +81,11 @@ class SearchGoogle extends Component {
     this.setState({ restaurantTable: restaurantArray });
   };
 
-  someAction(event) {
-    this.setState({ restaurants: ['fem'] });
-  }
-
-  handleChange(eventNd) {
-    this.setState({ value: eventNd.target.value });
-  }
-
-  handleSubmit(eventNd) {
-    alert(`You are getting Cuisines by: ${this.state.value}`);
-    eventNd.preventDefault();
-    if (this.setState = 'location') {
-      this.onSubmit;
-    } 
-    if (this.setState = 'locationAndType') {
-      this.onSubmitNd;
-    }
-  }
-
 
   render() {
     return (
       <div>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>
-         Choose how to find a Cuisine
-            <select value={this.state.value} onChange={this.handleChange} >
-              <option value="locationAndType">Location and Type</option>
-              <option value="location">Location just</option>
-            </select>
-          </label>
-          <input placeholder="Location" id="location" />
-          <button className="8">search</button>
-        </form>
 
         <form onSubmit={this.onSubmit} onChange={this.onChange} >
           <div id="search">
