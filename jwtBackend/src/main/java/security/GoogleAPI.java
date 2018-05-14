@@ -78,9 +78,38 @@ public class GoogleAPI {
         return sendGET(mystr);
     }
 
-    private static String getGooglePlaceByCoor(String latAndLng) throws IOException {
+    
+    
+    private static String parseLatAndLng(String latAndLng) {
+        String output = latAndLng.trim();        
+        boolean hasCharacter = latAndLng.matches(".*[a-zA-Z]+.*");
+        boolean hasCenterKommaAndSpace = latAndLng.matches(".*[,]\\s+.*");
+        boolean hasCenterSpaceAndKomma = latAndLng.matches(".*\\s+[,]+.*");
+        boolean hasCenterKomma = latAndLng.matches(".*[,]+.*");
+        boolean hasCenterSpace = latAndLng.matches(".*\\s+.*");
+                
+        if (hasCharacter) {
+            System.out.println(latAndLng);
+        } else {
+            if (hasCenterKomma & hasCenterSpaceAndKomma) {
+                String[] test = output.split(" ,");
+                //System.out.println("print 1: "+test[0]+","+test[1]);
+                output = test[0]+","+test[1];
+            } else if (hasCenterKomma & hasCenterKommaAndSpace) {
+                String[] test = output.split(", ");
+                //System.out.println("print 1: "+test[0]+","+test[1]);
+                output = test[0]+","+test[1];
+            } else if (hasCenterSpace) {
+                String[] test = output.split("\\s+");
+                output = test[0]+","+test[1];
+            }
+        }
+        return output;
+    }
+    
+    private static String getGooglePlaceByCoor(String latAndLng) throws IOException {        
         String mystr
-                = UrlFirstPart + "?location=" + latAndLng + StandardRadius +"&type=restaurant"+ "&key=" + UrlKey;
+                = UrlFirstPart + "?location=" + parseLatAndLng(latAndLng) + StandardRadius +"&type=restaurant"+ "&key=" + UrlKey;
         return sendGET(mystr);
     }
 
@@ -137,11 +166,16 @@ public class GoogleAPI {
     }
 
     public static void main(String[] args) throws IOException {
-//        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
+        parseLatAndLng("55.714655,11.717578");
+        parseLatAndLng("55.714655, 11.717578");
+        parseLatAndLng("55.714655 ,11.717578");
+        parseLatAndLng("55.714655 11.717578");
+
+        //System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
 //        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 //        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 // System.out.println(getplaceByTextSearch("fastfood koge"));
-        System.out.println(getAutoComplete("copenhagen fast"));
+        //System.out.println(getAutoComplete("copenhagen fast"));
     }
 
 }
