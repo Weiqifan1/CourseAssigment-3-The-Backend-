@@ -7,6 +7,10 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import exceptions.AuthenticationException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -57,5 +61,37 @@ public class UserFacade {
         return user;
     }
     
+   public static List<User> getaUserList() {
 
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+       EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT u.userName FROM User u");
+        List<User> userList =q.getResultList();
+        System.out.println(userList);
+//        for (int i = 0; i < userList.size(); i++) {
+//         
+//            userList.add( userList.get(i));//persons.put(i, personnes.get(i));
+//        }
+
+        return userList;
+
+    }
+   
+   public  List<Role> getaUserListRole(EntityManager em) {
+
+        Query q = em.createQuery("SELECT r.roleName FROM Role r");
+        List<Role> userListRole =q.getResultList();
+        System.out.println(userListRole);
+
+        return userListRole;
+
+    }
+    
+
+    public static void main(String[] args) {
+          EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+            EntityManager em = emf.createEntityManager();
+        System.out.println(getaUserList());
+    }
+   
 }

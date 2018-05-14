@@ -28,6 +28,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    private int id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "user_name", length = 25)
@@ -67,6 +68,13 @@ public class User implements Serializable {
         String hashed = BCrypt.hashpw(userPass, BCrypt.gensalt());
         this.userPass = hashed;
     }
+    
+    public User(int id, String userName, String userPass) {
+        this.id = id;
+        this.userName = userName;
+        String hashed = BCrypt.hashpw(userPass, BCrypt.gensalt());
+        this.userPass = hashed;
+    }
 
     public String getUserName() {
         return userName;
@@ -95,6 +103,10 @@ public class User implements Serializable {
 
     public void addRole(Role userRole) {
         roleList.add(userRole);
+    }
+    
+    public int getId() {
+        return id;
     }
     
 
