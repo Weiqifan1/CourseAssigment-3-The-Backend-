@@ -5,6 +5,7 @@ import SearchGoogle from './GoogleSearch';
 // import SearchGoogle from './AutoSearchGoogle';
 import LocationSearchInput from './AutocomplGooglePlaces';
 import SearchWithType from './FoursquareSearchWithType';
+import SearchGoogleCoor from './SearchGoogleCoor';
 
 class Home extends Component {
   render() {
@@ -19,6 +20,8 @@ class Home extends Component {
         <hr id="line2" />
         <h6>Autocomplete</h6>
         <LocationSearchInput />
+        <h6>Søg på koordinater</h6>
+        <SearchGoogleCoor />
         <LoginAs />
 
       </div>
