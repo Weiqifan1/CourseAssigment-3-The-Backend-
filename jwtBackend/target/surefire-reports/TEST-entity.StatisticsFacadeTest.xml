@@ -61,6 +61,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="entity.StatisticsFacadeTest" name="testAddReviewsDatabaseAndApi" time="0.011"/>
-  <testcase classname="entity.StatisticsFacadeTest" name="testCalculateAverageReview" time="0.104"/>
+  <testcase classname="entity.StatisticsFacadeTest" name="testAddReviewsDatabaseAndApi" time="0.013"/>
+  <testcase classname="entity.StatisticsFacadeTest" name="testCalculateAverageReview" time="0.102"/>
 </testsuite>
