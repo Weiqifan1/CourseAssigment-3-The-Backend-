@@ -11,7 +11,7 @@ class GoogleFacade {
         if (!results.ok) {
           throw Error(results.statusText);
         }
-        console.log(results.json());
+
         return results.json();
       })
       .then((data) => {
@@ -28,8 +28,6 @@ class GoogleFacade {
   };
 
   getRestaurantsByLocation = () => JSON.parse(localStorage.getItem('restaurantsByLocation'));
-
-
   getErrorMessageNoResults=() => JSON.parse({ NullError: 'Your search returned nothing try to specify your search' })
 }
 const googlefacade = new GoogleFacade();
