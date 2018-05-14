@@ -61,10 +61,11 @@ public class UserFacade {
         return user;
     }
     
-   public static List< User> getaUserList(EntityManager em) {
+   public static List<User> getaUserList() {
 
-       // Query q = em.createQuery("SELECT u.userName FROM User u");
-         Query q = em.createQuery("SELECT u.userName, r.roleName FROM User u, Role r INNER JOIN r.userList, u.roleList");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+       EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("SELECT u.userName FROM User u");
         List<User> userList =q.getResultList();
         System.out.println(userList);
 //        for (int i = 0; i < userList.size(); i++) {
@@ -76,7 +77,7 @@ public class UserFacade {
 
     }
    
-   public static List<Role> getaUserListRole(EntityManager em) {
+   public  List<Role> getaUserListRole(EntityManager em) {
 
         Query q = em.createQuery("SELECT r.roleName FROM Role r");
         List<Role> userListRole =q.getResultList();
@@ -90,7 +91,7 @@ public class UserFacade {
     public static void main(String[] args) {
           EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
             EntityManager em = emf.createEntityManager();
-        System.out.println(getaUserList(em));
+        System.out.println(getaUserList());
     }
    
 }
