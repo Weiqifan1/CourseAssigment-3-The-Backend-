@@ -21,7 +21,7 @@ public class UserEndpoint {
     @GET
     //@Path("/allusers")
     @Produces(MediaType.APPLICATION_JSON)
-    public static Response getUsers() throws IOException { //@PathParam("place")
+    public Response getUsers() throws IOException { //@PathParam("place")
         String userNames = UserFacade.getInstance().getaUserList().toString();
 
         JsonObject responseJson = new JsonObject();
@@ -31,7 +31,7 @@ public class UserEndpoint {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println(getUsers());
+        //System.out.println(getUsers());
     }
 
 }
