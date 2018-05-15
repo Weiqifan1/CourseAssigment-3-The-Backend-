@@ -39,6 +39,14 @@ public class GoogleAPI {
         String outPut = getGooglePlaceByCoor(search);
         return outPut;
 }
+     @GET
+    @Path("/image/{imageId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getImageById(@PathParam("imageId") String imageId) throws IOException {
+        String outPut = getplaceByTextSearch(imageId);
+        return outPut;
+}
+    
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
     private static final String StandardRadius = "&radius=10000";
 //  private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0"; //Bos
@@ -82,7 +90,13 @@ public class GoogleAPI {
         String mystr
                 = UrlFirstPart + "?location=" + latAndLng + StandardRadius +"&type=restaurant"+ "&key=" + UrlKey;
         return sendGET(mystr);
+    
     }
+        private static String getGoogleImageById(String photoreference) throws IOException{
+            String myImage= "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoreference+"&key="+UrlKey;
+            System.out.println(myImage);
+            return sendGET(myImage);
+        }
 
     private static String regexBetwTags(String text, String tag1, String tag2) {
         final Pattern pattern = Pattern.compile(tag1 + "(.+?)" + tag2);
@@ -113,8 +127,8 @@ public class GoogleAPI {
         URL obj = new URL(myUrl);//GET_URL
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
-//        con.setRequestProperty("Accept", "application/json");
-        con.setRequestProperty("User-Agent", USER_AGENT);
+      // con.setRequestProperty("Accept", "application/octet-stream");
+     con.setRequestProperty("User-Agent", USER_AGENT);
         int responseCode = con.getResponseCode();
        System.out.println("GET Response Code :: " + responseCode);
         if (responseCode == HttpURLConnection.HTTP_OK ) { // success
@@ -141,8 +155,8 @@ public class GoogleAPI {
 //        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 //        System.out.println(getGoogleStreetByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));
 // System.out.println(getplaceByTextSearch("fastfood koge"));
-        System.out.println(getAutoComplete("copenhagen fast"));
+        System.out.println(getGoogleImageById
+        ("CmRaAAAAmPpJDaa6e3CIzbbZBJ2K_27rAD58rT8y8e_ndZtES6BZXrvI-GiF1m5-fggBv23SWat567iMLWPWEyu3Pdkog5cxAPiRHB0Jg5aYTNiyWBfG2IpbJAuKCTq-3RYQ16w8EhA7T_Ck5x58jxQ2JJMt2mNbGhRHTCw0E-giT-oQwsIGKW6P5FwZGA"));
     }
 
 }
-

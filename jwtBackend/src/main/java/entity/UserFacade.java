@@ -77,7 +77,7 @@ public class UserFacade {
 
     }
    
-   public  List<Role> getaUserListRole(EntityManager em) {
+   public static List<Role> getaUserListRole(EntityManager em) {
 
         Query q = em.createQuery("SELECT r.roleName FROM Role r");
         List<Role> userListRole =q.getResultList();
@@ -92,6 +92,7 @@ public class UserFacade {
           EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
             EntityManager em = emf.createEntityManager();
         System.out.println(getaUserList());
+        System.out.println(getaUserListRole(em));
     }
    
 }
