@@ -2,19 +2,15 @@ package security;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import static com.nimbusds.jose.Payload.Origin.JSON;
-import entity.User;
 import entity.UserFacade;
 import java.io.IOException;
-import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/user")
+@Path("users")
 
 public class UserEndpoint {
 
