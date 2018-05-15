@@ -3,6 +3,7 @@ import CheckboxForFoodTypes from './CheckboxForFoodTypes';
 import GoogleFacade from './GoogleFacadeAuto';
 import LocationSearchInput from './GooglePlacesAutocompl';
 
+
 class SearchGoogle extends Component {
   constructor(props) {
     super(props);

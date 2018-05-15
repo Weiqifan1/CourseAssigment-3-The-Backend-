@@ -15,24 +15,22 @@ function handleHttpErrors(res) {
 
 class ApiFacade {
     fetchData = () => {
-        const userRole = this.getRole();
-        if (userRole === "user") {
-            const options = this.makeFetchOptions("GET");
-            return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
-        } else if (userRole === "admin") {
-            const options = this.makeFetchOptions("GET");
-            return fetch(URL + "/api/info/admin", options).then(handleHttpErrors);
-        } 
-            console.log('Error in fetchData - apiData.js');
-        
-
+      const userRole = this.getRole();
+      if (userRole === 'user') {
+        const options = this.makeFetchOptions('GET');
+        return fetch(`${URL}/api/info/user`, options).then(handleHttpErrors);
+      } else if (userRole === 'admin') {
+        const options = this.makeFetchOptions('GET');
+        return fetch(`${URL}/api/info/admin`, options).then(handleHttpErrors);
+      }
+      console.log('Error in fetchData - apiData.js');
     }
 
-    // læser fra token hver gang den ikke er null (hvilket også gælder med refreshes, redirects osv.)
+    // læser fra token hver gang den ikke er null(hvilket også gælder med refreshes, redirects osv.)
     getRole = () => {
-      if (facade.getToken() !== null) {
-        let userToken = this.getToken();
-        let decoded = jwtDecode(userToken);
+      if (this.getToken() !== null) {
+        const userToken = this.getToken();
+        const decoded = jwtDecode(userToken);
         var userRoles = decoded.roles;
       } else {
         const userRole = '';
@@ -42,9 +40,9 @@ class ApiFacade {
     }
 
     getUserName = () => {
-      if (facade.getToken() !== null) {
-        let userToken = this.getToken();
-        let decoded = jwtDecode(userToken);
+      if (this.getToken() !== null) {
+        const userToken = this.getToken();
+        const decoded = jwtDecode(userToken);
         var userName = decoded.sub;
       } else {
         const userName = '';
@@ -69,7 +67,7 @@ class ApiFacade {
     login = (user, pass) => {
       try {
         const options = this.makeFetchOptions('POST', { username: user, password: pass });
-        return fetch(`${URL  }/api/login`, options, true)
+        return fetch(`${URL}/api/login`, options, true)
           .then(handleHttpErrors)
           .then((res) => { this.setToken(res.token); });
       } catch (error) {
