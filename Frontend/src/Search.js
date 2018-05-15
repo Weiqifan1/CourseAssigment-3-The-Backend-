@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-import UserSearchResult from './UserSearchResult';
 import Logo_black from './images/Logo_black.jpg';
 import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png';
 // import RestaurantsSearchResult from './RestaurantsSearchResult'

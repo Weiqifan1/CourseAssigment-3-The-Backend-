@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-import GoogleFacade from './GoogleFacadeAuto';
 import LocationSearchInput from './GooglePlacesAutocompl';
 
 class SearchGoogle extends Component {
