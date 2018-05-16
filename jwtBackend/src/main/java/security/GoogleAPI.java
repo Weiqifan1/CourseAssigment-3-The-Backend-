@@ -16,6 +16,8 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.GET;
 /**
  *
@@ -30,6 +32,10 @@ public class GoogleAPI {
     @Produces(MediaType.APPLICATION_JSON)
     public String getPlaceByText(@PathParam("place") String search) throws IOException {
         String outPut = getplaceByTextSearch(search);
+        System.out.println("hello google places ");
+        System.out.println(outPut);
+        //System.out.println();
+        System.out.println("end of test");
         return outPut;
 }
   @GET
@@ -66,7 +72,7 @@ public class GoogleAPI {
     
     private static String getplaceByTextSearch(String search) throws IOException {
         String trim = search.replace(" ", "+").trim();
-        System.out.println(trim);
+        //System.out.println(trim);
         
         String requestUrl = TextSerarchUrl + "?query=" + trim + "&key=" + UrlKey;
         System.out.println(requestUrl);
@@ -110,32 +116,43 @@ public class GoogleAPI {
 
     private static String sendGET(String myUrl) throws IOException {
         String output = "";
+        
         URL obj = new URL(myUrl);//GET_URL
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("GET");
-//        con.setRequestProperty("Accept", "application/json");
-        con.setRequestProperty("User-Agent", USER_AGENT);
-        int responseCode = con.getResponseCode();
-       System.out.println("GET Response Code :: " + responseCode);
-        if (responseCode == HttpURLConnection.HTTP_OK ) { // success
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
+        try {
+            
+            con.setRequestMethod("GET");
+    //        con.setRequestProperty("Accept", "application/json");
+            con.setRequestProperty("User-Agent", USER_AGENT);
+            int responseCode = con.getResponseCode();
+            System.out.println("GET Response Code :: " + responseCode);
 
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            if (responseCode == HttpURLConnection.HTTP_OK ) { // success
+                BufferedReader in = new BufferedReader(new InputStreamReader(
+                        con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // print result
+                output = response.toString();
+            } else {
+                System.out.println("GET request did not work");
+                output = "GET request did not work";
             }
-            in.close();
-
-            // print result
-            output = response.toString();
-        } else {
-            output = "GET request did not work";
+        } catch (IOException e) {            
+            Logger logger = Logger.getLogger("sem3pro.Logger.GoogleApi");
+            logger.log(Level.SEVERE, "error 500: google or internet unavailable: " + e.toString());
         }
+        
         return output;
     }
-
+    
+    
     public static void main(String[] args) throws IOException {
 //        System.out.println(getGooglePlaceByCoor("-33.8670522,151.1957362"));
 //        System.out.println(getGoogleCityByCoor(getGooglePlaceByCoor("-33.8670522,151.1957362")));

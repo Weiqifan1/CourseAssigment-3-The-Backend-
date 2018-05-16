@@ -10,6 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -160,7 +162,7 @@ public class RemoteServerEndpoint {
         String jsonOutput = "virker ikke";
 
         try {
-
+            
             URL url = new URL(inputUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -179,7 +181,12 @@ public class RemoteServerEndpoint {
 
             System.out.println(jsonStr);
             jsonOutput = jsonStr;
+            
+        } catch (IOException e) {            
+            Logger logger = Logger.getLogger("sem3pro.Logger.fourSquare");
+            logger.log(Level.SEVERE, "error 500: fourSquare or internet unavailable: " + e.toString());
         } catch (Exception e) {
+            
             jsonOutput = "catch error: " + e;
         }
         return jsonOutput;
@@ -191,15 +198,15 @@ public class RemoteServerEndpoint {
 //     System.out.println(get4SquareByLokation("nyc"));
 //     
 //        System.out.println("Chr test...");
-//        System.out.println(get4SquareByCoordinates(55.46, 12.30, 250));
+       System.out.println(get4SquareByCoordinates(52.52437, 13.41053, 250));
 //        System.out.println(get4SquareByLokation("nyc"));
-        System.out.println("Benedikte test");
+        //System.out.println("Benedikte test");
 //        System.out.println(get4SquareByCoordinatesAsString("55.45,12.30"));n {
 //        System.out.println("swapi test");
 //       // System.out.println(getValueFromServer("http://restcountries.eu/rest/v1/alpha"));
 //        System.out.println(getValueFromServer("https://swapi.co/
 ////////////////    System.out.println (get4SquareByLokation("koge"));
         //System.out.println(get4SquareByCoordinates(55.46, 12.30));
-        System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=family"));
+        //System.out.println(get4SquareCategoriesLocation("koge&categoryId=4d4b7105d754a06374d81259&query=family"));
     }
     }

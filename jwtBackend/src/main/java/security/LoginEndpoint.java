@@ -48,9 +48,12 @@ public class LoginEndpoint {
       responseJson.addProperty("token", token);
       return Response.ok(new Gson().toJson(responseJson)).build();
 
-    } catch (Exception ex) {
+    } catch (Exception ex) {  
       if (ex instanceof AuthenticationException) {
         throw (AuthenticationException) ex;
+      } else {
+            Logger logger = Logger.getLogger("sem3pro.Logger.LoginEndPoint");
+            logger.log(Level.SEVERE, "error 500: userServer or internet unavailable: " + ex.toString());
       }
       Logger.getLogger(GenericExceptionMapper.class.getName()).log(Level.SEVERE, null, ex);
     }
