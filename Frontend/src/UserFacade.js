@@ -6,7 +6,7 @@ const URL = 'http://localhost:8084/jwtbackend/api/';
 class UserFacade {
  
   async fetchAllUsers() {
-    const userFetch = 'user';
+    const userFetch = 'users';
 
     const result = await fetch(URL + userFetch).then(response => response.json());
    
