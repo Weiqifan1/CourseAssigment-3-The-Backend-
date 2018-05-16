@@ -41,11 +41,12 @@ public class GoogleAPI {
 }
      @GET
     @Path("/image/{imageId}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("image/jpg,image/png")
     public String getImageById(@PathParam("imageId") String imageId) throws IOException {
-        String outPut = getplaceByTextSearch(imageId);
+        String outPut = getGoogleImageById(imageId);
         return outPut;
 }
+    
     
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
     private static final String StandardRadius = "&radius=10000";
@@ -93,9 +94,10 @@ public class GoogleAPI {
     
     }
         private static String getGoogleImageById(String photoreference) throws IOException{
-            String myImage= "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoreference+"&key="+UrlKey;
+            String myImage= "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoreference+            "&key=" + UrlKey;
+
             System.out.println(myImage);
-            return sendGET(myImage);
+            return sendGETImages(myImage);
         }
 
     private static String regexBetwTags(String text, String tag1, String tag2) {
@@ -129,6 +131,33 @@ public class GoogleAPI {
         con.setRequestMethod("GET");
       // con.setRequestProperty("Accept", "application/octet-stream");
      con.setRequestProperty("User-Agent", USER_AGENT);
+        int responseCode = con.getResponseCode();
+       System.out.println("GET Response Code :: " + responseCode);
+        if (responseCode == HttpURLConnection.HTTP_OK ) { // success
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            // print result
+            output = response.toString();
+        } else {
+            output = "GET request did not work";
+        }
+        return output;
+    }
+     private static String sendGETImages(String myUrl) throws IOException {
+        String output = "";
+        URL obj = new URL(myUrl);//GET_URL
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+    con.setRequestProperty("Accept", "image/*");
+    // con.setRequestProperty("User-Agent", USER_AGENT);
         int responseCode = con.getResponseCode();
        System.out.println("GET Response Code :: " + responseCode);
         if (responseCode == HttpURLConnection.HTTP_OK ) { // success
