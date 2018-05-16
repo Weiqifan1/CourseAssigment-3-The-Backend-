@@ -40,7 +40,6 @@ export default App = () => <RouteStack style={{ marginTop: Platform.OS === 'ios'
 
 const RouteStack = StackNavigator({
   Home: { screen: HomeScreen },
-  FetchExample: { screen: FetchExample },
   SearchRestaurant: { screen: SearchRestaurant },
   Login: { screen: Login },
   LoggedIn: { screen: LoggedIn },

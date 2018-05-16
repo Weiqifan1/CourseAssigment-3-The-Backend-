@@ -2,21 +2,25 @@ import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Button, FlatList, TextInput, List, ListItem, ScrollView } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
 //import { List, ListItem } from "react-native-elements";
-import GoogleFacade from './GoogleFacade';
+
 
 
 // Se mere her https://docs.expo.io/versions/v27.0.0/sdk/location
-
+const URLGETRESTAURANTSBYCOORDINATES = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/latlgt/';
 
 class className extends Component {
-  
-    state = {
-        location: null,
-        errorMessage: null,
-        restaurants: [],
-        restaurantTable: '',
-        coordinates: ''
-    };
+
+    constructor() {
+        super();
+        this.state = {
+            location: null,
+            errorMessage: null,
+            restaurants: [],
+            restaurantTable: '',
+            coordinates: '',
+            test: '',
+        };
+    }
 
 
 
@@ -35,32 +39,32 @@ class className extends Component {
         this.getRestaurantsFromFetch();
     };
 
-    getRestaurantsFromFetch(){
+    getRestaurantsFromFetch() {
         latitude = this.state.location.coords.latitude;
         longitude = this.state.location.coords.longitude;
         latlng = latitude + "," + longitude;
-        this.setState({ restaurants: GoogleFacade.fetchRestaurantsByCoordinates(latlng) })
-       .then(GoogleFacade.getRestaurantsByLocation.map((restaurant)=> {
-const restaurantsArray = (
-                  
+        fetch(`${URLGETRESTAURANTSBYCOORDINATES + latlng}`)
+            .then((results) => {
+                if (!results.ok) {
+                    throw Error(results.statusText);
+                }
+                return results.json();
+            })
+            .then((data) => {
 
-                   
-<FlatList
-    data={this.state.restaurants}
-    renderItem={({ restaurant }) => (
-        <ListItem
-            roundAvatar
-            title={`${restaurant.name} ${restaurant.name}`}
-            subtitle={restaurant.name}
-            avatar={{ uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM` }}
-        />
-    )}
-/>
+                this.setState({ restaurants: data.results })
+                // console.log("linje 52 " + this.state.restaurants.name)
+                //this.setState({ test: this.state.restaurants[1].name })
+                /*                 const restaurantsArray = (
+                             
+                
+                
+                                )
+                
+                                this.setState({ restaurantTable: restaurantsArray }) */
 
-                    
-              )
-        
-        this.setState({restaurantTable:restaurantsArray})}))
+            })
+
     }
 
     onPressButton = (evt) => {
@@ -73,14 +77,14 @@ const restaurantsArray = (
         }
     }
 
-    
+
 
     render() {
         let text = 'Waiting..';
         let latitude;
         let longitude;
         let latlng;
-
+        // console.log("linqjqqqeqq ",this.state.restaurants[0])
         if (this.state.errorMessage) {
             text = this.state.errorMessage;
         } else if (this.state.location) {
@@ -98,65 +102,46 @@ const restaurantsArray = (
             //Print the location object. Remove it.
             //text2 = JSON.stringify(this.state.location);
 
-            //Creates the table
-            /* const restaurantArray = this.state.restaaurants.map(resturant =>
-                (
-    
-                    <Text>
-    
-                        <table className="table">
-                            <thead />
-                            <tbody>
-                                <tr key={restaurant.id}>
-                                    <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM`} height="75" alt="noimage" /></td>
-                                    <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
-                                    <td>Rating: {restaurant.rating}</td>
-                                    <td />
-    
-                                </tr>
-    
-                            </tbody>
-                        </table>
-                    </div>
-                ),
-            );
-    
-            this.setState({ restaurantTable: restaurantArray }); */
+
         }
 
         let restarantsFromFetch = this.state.restaurants;
 
-        console.log(restarantsFromFetch);
-        if (restarantsFromFetch === "null") {
+
+        if (restarantsFromFetch === undefined) {
             var view = "null";
         }
+        view = this.state.restaurantTable
 
 
         return (
-
             <View style={styles.container} >
-<ScrollView>
-                <Text>Search for a restaurant based on your location</Text>
+                <ScrollView  >
+                    <Text>{this.state.test}</Text>
+                    <Text>Search for a restaurant based on your location</Text>
+                    <Text> {this.state.test}</Text>
 
-                <TextInput style={styles.inputField} placeholder="Does not work."
-                    multiline={true}
-                    numberOfLines={1}
-                />
+                    <TextInput style={styles.inputField} placeholder="Does not work."
+                        multiline={true}
+                        numberOfLines={1}
+                    />
 
-                <Button
-                    onPress={() => this.onPressButton()}
-                    title="Gps location"
-                />
+                    <Button
+                        onPress={() => this.onPressButton()}
+                        title="Gps location"
+                    />
 
-                <Text>{this.state.restaurantTable}</Text>
-                
+                    <FlatList
+                        data={this.state.restaurants}
+                        renderItem={({ item }) => <Text>{item.name}</Text>}
+                    />
 
-                <Text style={styles.paragraph}>{text}</Text>
-                <Text style={styles.paragraph}>Latitude: {latitude}</Text>
-                <Text style={styles.paragraph}>Longtitude: {longitude}</Text>
-                <Text style={styles.paragraph}>Longtitude and Longtitude: {latlng}</Text>
-</ScrollView>
+                    <Text style={styles.paragraph}>{text}</Text>
+                    <Text style={styles.paragraph}>Latitude: {latitude}</Text>
+                    <Text style={styles.paragraph}>Longtitude: {longitude}</Text>
+                    <Text style={styles.paragraph}>Longtitude and Longtitude: {latlng}</Text>
 
+                </ScrollView>
             </View>
         );
     }

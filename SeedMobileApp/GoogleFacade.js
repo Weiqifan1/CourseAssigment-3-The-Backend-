@@ -30,23 +30,23 @@ class GoogleFacade {
 await fetch(URLGETRESTAURANTSBYCOORDINATES + latlng)
   
             .then( res => {
-                console.log("results"+res)
+         
                 if (!res.ok) {
                     throw Error("error" +res);
                 }
                 return res.json();
-                console.log("res.json()")
+             
             })
             .then((data) => {         
                 this.setRestaurantsByLocation(data.results);
-                console.log("gf42")
+            
                 // callback(restaurants);
             });
     }
 
 
     setRestaurantsByLocation =  (responseFromFetch) => {
-        console.log("responsefromfetch"+responseFromFetch[0].name)
+    
         try {
         
          AsyncStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
