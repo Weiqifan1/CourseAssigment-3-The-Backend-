@@ -40,8 +40,8 @@ export default class LocationSearchInput extends React.Component {
 
         return results.json();
       })
-      .then(async (data) => {
-        await console.log(data);
+      .then( (data) => {
+       
         const restaurantArray = data.results.map(restaurant =>
 
 
@@ -53,7 +53,7 @@ export default class LocationSearchInput extends React.Component {
                 <thead />
                 <tbody>
                   <tr key={restaurant.id}>
-                    {/* <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM`} height="75" alt="noimage" /></td> */}
+                    <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM`} height="75" alt="noimage" /></td> */}
                     <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
                     <td>Rating: {restaurant.rating}</td>
                     <td />
