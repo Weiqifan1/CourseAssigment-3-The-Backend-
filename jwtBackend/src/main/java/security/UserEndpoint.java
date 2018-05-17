@@ -19,34 +19,31 @@ import java.util.logging.Logger;
 import javax.faces.component.UpdateModelException;
 import javax.persistence.NoResultException;
 import org.eclipse.persistence.exceptions.JPQLException;
+
 @Path("users")
 
 public class UserEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
- public Response getUsers() throws PersistenceException { 
-   
-        
-    try {
-           List<User> userNames = UserFacade.getInstance().getaUserList();
-    
-        return Response.ok(new Gson().toJson(userNames)).build();
-   
-   
+    public Response getUsers() throws PersistenceException {
+
+        try {
+            List<User> userNames = UserFacade.getInstance().getaUserList();
+
+            return Response.ok(new Gson().toJson(userNames)).build();
+
         } catch (Exception ex) {
-          Logger.getLogger(PersistenceException.class.getName()).log(Level.SEVERE, "Fejl i Database forbindelse", ex);
-          System.out.println("Her fremvises Ezceptions besked:  " + ex.getMessage());
+            Logger.getLogger(PersistenceException.class.getName()).log(Level.SEVERE, "Fejl i Database forbindelse", ex);
+            System.out.println("Her fremvises Ezceptions besked:  " + ex.getMessage());
             throw new PersistenceException(ex.getMessage());
         }
 
     }
-       
-
 
     public static void main(String[] args) throws IOException, PersistenceException {
 
-       // System.out.println(getUsers());
+        // System.out.println(getUsers());
     }
 
 }

@@ -48,7 +48,7 @@ public class GoogleAPI {
 }
     
     private static final String UrlFirstPart = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-    private static final String StandardRadius = "&radius=10000";
+    private static final String StandardRadius = "&radius=2000";
 //  private static final String UrlKey = "AIzaSyBbdu5tPAp2P0EGbFgdGfzk_Vz7GUbsNO0"; //Bos
 // private static final String UrlKey = "AIzaSyDr5OFAHNYW2AdC2R8hqd3vH6QzirUkeNg"; // benediktes
  private static final String UrlKey= "AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM";

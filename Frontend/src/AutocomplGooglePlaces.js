@@ -33,7 +33,8 @@ export default class LocationSearchInput extends React.Component {
 
         return results.json();
       })
-      .then((data) => {
+      .then(async (data) => {
+        await console.log(data);
         const restaurantArray = data.results.map(restaurant =>
 
 
