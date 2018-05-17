@@ -5,12 +5,19 @@ import CheckboxForFoodTypes from './CheckboxForFoodTypes';
 const baseURL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/';
 const latlngURL = 'api/googleplaces/latlgt/';
 
+
 export default class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       address: '', location: '', restaurants: [], restaurantTable: '', prediction: '',
     };
+  }
+
+
+  handleChange = (address) => {
+    this.setState({ address });
+    console.log(this.state.address);
   }
 
 
@@ -107,6 +114,7 @@ export default class LocationSearchInput extends React.Component {
         </form>
         {this.state.restaurantTable}
       </div>
+
     );
   }
 }
