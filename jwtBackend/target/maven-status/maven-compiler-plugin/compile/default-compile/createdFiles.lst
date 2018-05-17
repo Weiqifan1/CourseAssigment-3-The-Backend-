@@ -1,5 +1,7 @@
 entity/StatisticsFacade.class
 security/ErrorEndpoint.class
 security/RemoteServerEndpoint.class
+exceptions/PersistenceException.class
+security/UserEndpoint.class
 security/GoogleAPI.class
 security/Error.class

@@ -1,6 +1,6 @@
-import React from 'react'
-import AsyncStorage from 'react-native'
-
+import React from 'react';
+import AsyncStorage from 'react-native';
+import {  Image  } from 'react-native';
 
 
 const URL = "https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT";
@@ -92,5 +92,4 @@ class AppFacade {
 const facade = new AppFacade();
 
 export default facade;
-
 
