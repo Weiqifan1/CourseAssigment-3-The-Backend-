@@ -10,6 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -160,7 +162,7 @@ public class RemoteServerEndpoint {
         String jsonOutput = "virker ikke";
 
         try {
-
+            
             URL url = new URL(inputUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -179,11 +181,16 @@ public class RemoteServerEndpoint {
 
             System.out.println(jsonStr);
             jsonOutput = jsonStr;
+            
+        } catch (IOException e) {            
+            Logger logger = Logger.getLogger("sem3pro.Logger.fourSquare");
+            logger.log(Level.SEVERE, "error 500: fourSquare or internet unavailable: " + e.toString());
         } catch (Exception e) {
+            
             jsonOutput = "catch error: " + e;
         }
         return jsonOutput;
-    }
+}
 
     public static void main(String[] args) throws IOException{
 
