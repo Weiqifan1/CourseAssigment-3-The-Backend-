@@ -5,6 +5,7 @@ C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main
 C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\utils\SetupTestUsers.java
 C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\security\RemoteServerEndpoint.java
 C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\cors\CorsResponseFilter.java
+C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\exceptions\PersistenceException.java
 C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\security\GoogleAPI.java
 C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\entity\StatisticsFacade.java
 C:\Users\Ejer\Documents\3. sem semesterprojekt\sem3pro_TesCI\jwtBackend\src\main\java\security\UserEndpoint.java

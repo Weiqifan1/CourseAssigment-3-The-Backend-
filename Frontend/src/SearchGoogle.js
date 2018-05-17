@@ -33,7 +33,7 @@ class SearchGoogle extends Component {
             <thead />
             <tbody>
               <tr key={restaurant.id}>
-                <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM`} height="75" alt="noimage" /></td>
+                {/* <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM`} height="75" alt="noimage" /></td> */}
                 <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
                 <td>Rating: {restaurant.rating}</td>
                 <td />

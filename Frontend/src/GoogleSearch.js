@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-// import fetchRestaurantsByLocation from './SearchFacade';
+
 
 
 const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
+
 
 class SearchGoogle extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class SearchGoogle extends Component {
     this.state = {
       location: '', restaurants: [], restaurantTable: '', errormessage: '',
     };
+
   }
 
 
@@ -80,6 +82,7 @@ class SearchGoogle extends Component {
         </div>
       );
     }
+
 }
 
 export default SearchGoogle;
