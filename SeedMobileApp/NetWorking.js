@@ -8,23 +8,19 @@ export default class FetchExample extends React.Component {
     this.state ={ isLoading: true}
   }
 
-  componentDidMount(){
+  /* componentDidMount(){
     return fetch('https://benedikteeva.dk/jwtBackend-1.0-SNAPSHOT/api/remote/people?=results')
       .then((response) => response.json())
       .then((data) => {
-
         this.setState({
           isLoading: false,
           dataSource: data.results,
         }, function(){
-
         });
-
       })
       .catch((error) =>{
-
       });
-  }
+  } */
 
 
   render(){
@@ -44,7 +40,7 @@ export default class FetchExample extends React.Component {
           renderItem={({item}) => <Text>{item.name}, {item.gender}</Text>}
           keyExtractor={(item, index) => index}
 
-        />  <Image source={require('./Luke_Skywalker.png')}  />
+        /> <Image source={require('./LOGO3.png')}/>
 
       </View>
     );

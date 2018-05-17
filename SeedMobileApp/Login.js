@@ -29,7 +29,7 @@ console.log(error)
   render() {
     return (
       <View style={{ padding: 20 }}>
-  <Image source={require('./yodaicon.jpg')}/>
+  {/* <Image source={require('./LOGO3.png')}/> */}
         <Text
           style={{ fontSize: 27 }}>
           Login

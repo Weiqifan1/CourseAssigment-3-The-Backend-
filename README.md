@@ -25,7 +25,7 @@ jwtBackend er nu sat op, og klar til brug :neckbeard:
 * Start projektet. Hvis du bruger npm: **npm start**. Bruger du yarn: **yarn start**
 * I din editor åbner du **apiFacade.js**. I toppen af filen **tjekker du URL variablen**, er den samme som din lokale server(urlen du kopierede i jwtBackend vejledningen **(Dette gøres kun, hvis du ønsker at arbejde lokalt. Når du har clonet projektet er persistence unit og url sat til at forbinde med en deployed server)**.
 * Hvis du vil køre med en **deployed database** skal urlen være: **https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT**
-
+For at bruge autocomplete skal den installeres: npm install --save react-places-autocomplete
 Du er nu klar til at kode i frontend delen :man:
 
 # SeedMobileApp

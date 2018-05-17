@@ -1,55 +1,46 @@
-import React from "react";
-import data from './dummyData/TestUsers.json';
-import AddEditUsers from "./AddEditUsers";
+// Linting rules that is disabeled for this file.
+/* eslint arrow-parens: 0 */
+/* eslint jsx-a11y/anchor-is-valid: 0 */
+/* class-methods-use-this: 0 */
 
-//Users shows a list of all the users to the admin
+import React from 'react';
+import AddEditUsers from './AddEditUsers';
+import UserFacade from './UserFacade';
+
+// Users shows a list of all the users to the admin
 export default class Users extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { userid: '', users: [] };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = { userid: "" }
-    }
 
-    onEdit = async (evt) => {
-        this.setState({ userid: evt.target.id })
-        evt.preventDefault();
+  onEdit = async (evt) => {
+    this.setState({ userid: evt.target.id });
+    evt.preventDefault();
+  }
+  onDelete = (evt) => {
+    this.setState({ [evt.target.id]: evt.target.value });
+  }
 
-        await console.log(evt)
-    }
-    onDelete = (evt) => {
-        this.setState({ [evt.target.id]: evt.target.value })
-    }
+  //Kalder fetch her. Viser først siden tom. Derefter compoundDidMount. 
+  async componentDidMount() {
+    const allUsers = await UserFacade.fetchAllUsers();
+    
+    //Når state er sat, så render den igen.
+    this.setState({ users: allUsers });
+  }
 
-    render() {
-        const row = data.users.map((user) => {
 
-            return (
+  render() {
 
-                <tr key={user.id}>
-                    <td>{user.id}</td><td>{user.userName}</td><td>{user.email}</td><td>{user.userRole}</td>
-                    <td><a href="" onClick={this.onEdit} id={user.id}>Edit</a> <a href="" onClick={this.onDelete} id={user.id}>Delete</a></td>
-                </tr>
-            )
-        });
-
-        return (
-            <div id="5g">
-
-                <table className="table">
-
-                    <thead>
-                        <tr><th>Id</th><th>Name</th><th>Email</th><th>User Role</th></tr>
-                    </thead>
-
-                    <tbody>
-                        {row}
-                    </tbody>
-
-                </table>
-
-                <AddEditUsers id="5h" />
-
-            </div >
-        );
-    }
+    const userList = this.state.users.map((user, index) => (<li key={index}>{user}</li>))
+    return (
+      <div id="5g">
+        <ul>
+          {userList}
+        </ul>
+      </div >
+    );
+  }
 }
