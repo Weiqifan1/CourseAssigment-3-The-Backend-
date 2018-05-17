@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
         resources.add(security.JWTAuthenticationFilter.class);
         resources.add(security.LoginEndpoint.class);
         resources.add(security.RemoteServerEndpoint.class);
+        resources.add(security.UserEndpoint.class);
   }
 
 }
