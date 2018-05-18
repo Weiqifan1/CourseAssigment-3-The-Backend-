@@ -5,6 +5,7 @@ import Logo_black from './images/Logo_black.jpg';
 import Powered_by_Foursquare_black_300 from './images/Powered_by_Foursquare_black_300.png';
 // import RestaurantsSearchResult from './RestaurantsSearchResult'
 import fourfacade from './FoursquareFacade';
+import SearchFacade from './SearchFacade';
 
 const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/restaurants/';
 class SearchWithType extends Component {
@@ -12,7 +13,7 @@ class SearchWithType extends Component {
     super(props);
 
     this.state = {
-      location: '', type: 'notype', restaurants: '', poweredlogo: '',
+      location: '', type: 'notype', restaurants: '', poweredlogo: '', foursquareSearch: [],
     };
     this.someAction = this.someAction.bind(this);
   }
@@ -101,7 +102,40 @@ class SearchWithType extends Component {
     this.setState({ restaurants: 'recent', type: 'notype' });
   }
 
+  //Used to fetch from SearchFacade
+  /* onSubmit = (evt) => {
+    evt.preventDefault();
+
+    this.componentDidMount();
+  }
+
+  //Used to fetch from SearchFacade
+  async componentDidMount() {
+    const resultFoursquare = await SearchFacade.fetchFoursquareNoType(this.state.location);
+    console.log(resultFoursquare.response);
+    this.setState({ foursquareSearch: resultFoursquare });
+  } */
+
   render() {
+    /* let res = this.state.foursquareSearch.response;
+    console.log(res); */
+
+    //Used to fetch from SearchFacade
+    //Table for the restaurant search.
+    /* const tableToFoursquareSearch = this.state.foursquareSearch.response.groups[0].items && this.state.foursquareSearch.response.groups[0].items.map((restaurant) => (
+      <table className="table">
+        <thead><th>Restaurant</th><th>Rating</th></thead>
+        <tbody>
+          <tr key={restaurant.name}>
+            <td><img src={Logo_black} alt="Logo" width="20" /></td>
+            <td><img src={`${restaurant.categories[0].icon.prefix}width${36}${restaurant.categories[0].icon.suffix}`} alt="picture" /></td>
+            <td><p>{restaurant.name}</p>{restaurant.location.address}</td>
+            <td>Rating: {restaurant.categories[0].name}</td>
+          </tr>
+        </tbody>
+      </table>
+    )) */
+
     return (
       <div>
 
