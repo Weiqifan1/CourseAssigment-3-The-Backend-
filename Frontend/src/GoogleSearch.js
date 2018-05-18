@@ -35,7 +35,7 @@ class SearchGoogle extends Component {
   render() {
 
     //Table for the restaurant search.
-    const rowToGoggleSearch = this.state.goggleSearch.results && this.state.goggleSearch.results.map((restaurant) => (
+    const tableToGoggleSearch = this.state.goggleSearch.results && this.state.goggleSearch.results.map((restaurant) => (
       <table className="table">
         <thead><th>Restaurant</th><th>Rating</th></thead>
         <tbody>
@@ -61,7 +61,7 @@ class SearchGoogle extends Component {
         </form>
 
         <div>
-          {rowToGoggleSearch}
+          {tableToGoggleSearch}
         </div>
 
       </div>
