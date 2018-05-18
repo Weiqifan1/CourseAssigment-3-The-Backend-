@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-// import fetchRestaurantsByLocation from './SearchFacade';
+
 
 
 const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
+
 
 class SearchGoogle extends Component {
   constructor(props) {
@@ -12,6 +13,10 @@ class SearchGoogle extends Component {
     this.state = {
       location: '', restaurants: [], restaurantTable: '', errormessage: '',
     };
+
+    this.state = { hasError: false };
+    this.state = { logErrorToMyService: [], error: '', info: '', };
+
   }
 
 
@@ -58,11 +63,24 @@ class SearchGoogle extends Component {
         });
     };
 
+    componentDidCatch(error, info) {
+      // Display fallback UI
+      this.setState({ hasError: true });
+      // You can also log the error to an error reporting service
+     this.setState({logErrorToMyService: error, info})
+    }
+
 
     render() {
+      if (this.state.hasError) {
+        // You can render any custom fallback UI
+        return <h1>Something went wrong.</h1>;
+      }
       return (
-        <div>
 
+        <div>
+          
+     <h2> Helloooo </h2>
           <form onSubmit={this.onSubmit} onChange={this.onChange} >
             <CheckboxForFoodTypes id="3" />
             <div id="search">
@@ -80,6 +98,7 @@ class SearchGoogle extends Component {
         </div>
       );
     }
+
 }
 
 export default SearchGoogle;
