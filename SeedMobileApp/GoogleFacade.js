@@ -6,52 +6,33 @@ const URLGETRESTAURANTSBYCOORDINATES = 'https://benedikteeva.dk/jwtBackend%2D1.0
 
 class GoogleFacade {
 
-    /* fetchRestaurantsByQuery = (location) => { // , callback
-        fetch(URL + location)
+    fetchRestaurantsByCoordinates = async (latlng) => { // , callback
+        console.log("fetchRestaurantsByCoor" + latlng)
+        await fetch(URLGETRESTAURANTSBYCOORDINATES + latlng)
 
-            .then(async (results) => {
-                if (!results.ok) {
-                    throw Error(results.statusText);
-                }
-                return results.json();
-            })
-            .then((data) => {
-                let restaurants = [];
-                restaurants = data.results;
-                this.setRestaurantsByLocation(restaurants);
-                // callback(restaurants);
-            });
-    }
- */
+            .then(res => {
 
-
- fetchRestaurantsByCoordinates =async (latlng) => { // , callback
-    console.log("fetchRestaurantsByCoor"+latlng)
-await fetch(URLGETRESTAURANTSBYCOORDINATES + latlng)
-  
-            .then( res => {
-         
                 if (!res.ok) {
-                    throw Error("error" +res);
+                    throw Error("error" + res);
                 }
                 return res.json();
-             
+
             })
-            .then((data) => {         
+            .then((data) => {
                 this.setRestaurantsByLocation(data.results);
-            
+
                 // callback(restaurants);
             });
     }
 
 
-    setRestaurantsByLocation =  (responseFromFetch) => {
-    
+    setRestaurantsByLocation = (responseFromFetch) => {
+
         try {
-        
-         AsyncStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
+
+            AsyncStorage.setItem('restaurantsByLocation', JSON.stringify(responseFromFetch)); // JSON.stringify (gør den til en string.) Key value pair name(key)/value
         } catch (error) {
-            console.log("error"+error)
+            console.log("error" + error)
         }
     };
 
@@ -63,39 +44,3 @@ const googlefacade = new GoogleFacade();
 
 export default googlefacade;
 
-// Fra dokumentationen.
-/* try {
-    const value = await AsyncStorage.getItem('@MySuperStore:key');
-    if (value !== null) {
-        // We have data!!
-        console.log(value);
-    }
-} catch (error) {
-    // Error retrieving data
-} */
-
-/* getRestaurantsByLocation = async () => {
-    try {
-        let allRestaurants = JSON.parse(await AsyncStorage.getItem('restaurantsByLocation');
-        if (allRestaurants !== null) {
-            return allRestaurants;
-        }
-    } catch (error) {
-        console.log('Error in get from asyncStorage');
-    }
-}
-} */
-{/* <List>
-<FlatList
-    data={this.state.restaurants}
-    renderItem={({ restaurant }) => (
-        <ListItem
-            roundAvatar
-            title={`${restaurant.name} ${restaurant.name}`}
-            subtitle={restaurant.formatted_address}
-            avatar={{ uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM` }}
-        />
-    )}
-/>
-</List>
- */}

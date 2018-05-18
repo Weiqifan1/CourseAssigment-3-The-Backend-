@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import LoginAs from './LoginAs';
-import Search from './Search';
 import SearchGoogle from './GoogleSearch';
-// import SearchGoogle from './AutoSearchGoogle';
 import LocationSearchInput from './AutocomplGooglePlaces';
 import SearchWithType from './FoursquareSearchWithType';
+import SearchGoogleDropDown from './SearchGoogleDropDown';
 
 class Home extends Component {
   render() {
@@ -19,6 +18,7 @@ class Home extends Component {
         <hr id="line2" />
         <h6>Autocomplete</h6>
         <LocationSearchInput />
+        {/* <SearchGoogleDropDown/> */}
         <LoginAs />
 
       </div>
