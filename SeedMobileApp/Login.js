@@ -11,7 +11,7 @@ export  class LogIn extends Component {
     this.state = { username: "", password: "" , LoggedIn: false}
   }
 
-/*   login = async (evt) => {
+  login = async (evt) => {
 
  evt.preventDefault();
 evt.stopPropagation()
@@ -21,15 +21,17 @@ evt.stopPropagation()
 console.log(error)
     }
  
- alert ("logn" +this.state.username) 
-  } */
+ alert ("login" +this.state.username) 
+  }
 
 
 
   render() {
     return (
       <View style={{ padding: 20 }}>
-  {/* <Image source={require('./LOGO3.png')}/> */}
+  <Image source={require('./LOGO3.png')} style={{width: 100,
+    height: 100,
+    alignSelf: 'center'}}/> 
         <Text
           style={{ fontSize: 27 }}>
           Login
@@ -41,6 +43,7 @@ console.log(error)
           <TextInput placeholder='Username'  onChangeText={(username)=> this.setState({username:username})} />
           <TextInput placeholder='Password'onChangeText={(password)=> this.setState({password:password})} />
         <Button
+         color='green'
            onPress={async ()=> facade.login(this.state.username,this.state.password)
             .then(res => Login.setState({ loggedIn: true }))}
             title="Submit"
@@ -83,8 +86,8 @@ export default class Login extends Component {
     this.state = { loggedIn: false }
   }
 
-  logout = async () => {
-  await  facade.logout();
+  logout = () => {
+  facade.logout();
     this.setState({ loggedIn: false });
   }
 

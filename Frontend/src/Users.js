@@ -26,7 +26,7 @@ export default class Users extends React.Component {
   //Kalder fetch her. Viser først siden tom. Derefter compoundDidMount. 
   async componentDidMount() {
     const allUsers = await UserFacade.fetchAllUsers();
-    
+
     //Når state er sat, så render den igen.
     this.setState({ users: allUsers });
   }
@@ -34,12 +34,25 @@ export default class Users extends React.Component {
 
   render() {
 
-    const userList = this.state.users.map((user, index) => (<li key={index}>{user}</li>))
+    //const userList = this.state.users.map((user, index) => (<li key={index}>{user}</li>))
+    const userList2 = this.state.users.map((user, index) => (<tr key={index}><td>{user}</td></tr>))
     return (
       <div id="5g">
+        {/*  
         <ul>
           {userList}
         </ul>
+        */}
+
+        <table className="table">
+          <thead>
+            <th>User Name</th>
+          </thead>
+          <tbody>
+            {userList2}
+          </tbody>
+        </table>
+
       </div >
     );
   }
