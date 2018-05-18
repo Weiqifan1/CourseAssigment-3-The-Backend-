@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import CheckboxForFoodTypes from './CheckboxForFoodTypes';
-
-
-
-const URL = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/';
-
+import SearchFacade from './SearchFacade';
 
 class SearchGoogle extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      location: '', restaurants: [], restaurantTable: '', errormessage: '',
+      location: '',
+      errormessage: '',
+      goggleSearch: [],
     };
 
   }
@@ -21,69 +19,55 @@ class SearchGoogle extends Component {
     this.setState({ [evt.target.id]: evt.target.value });
   }
 
-    onSubmit = (evt) => {
-      evt.preventDefault();
-      fetch(URL + this.state.location)
-        .then((res) => {
-          if (!res.ok) {
-            throw Error(`error in results:  ${res.statusText}`);
-          }
-          return res.json();
-        })
-        .then((data) => {
-          //---------------------------------------------------------
 
-          const restaurantArray = data.results.map(restaurant =>
+  onSubmit = (evt) => {
+    evt.preventDefault();
 
-            (
-              <div>
+    this.componentDidMount();
+  }
 
-                <table className="table">
-                  <thead />
-                  <tbody>
-                    <tr key={restaurant.id}>
-                      {/* <td><img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM`} height="75" alt="noimage" /></td> */}
-                      {/* <td><img src={`https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/image/${restaurant.photos[0].photo_reference}`} height="75" alt="noimage" /></td> */}
-                      <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
-                      <td>Rating: {restaurant.rating}</td>
-                      <td />
+  async componentDidMount() {
+    const goggleSearchResult = await SearchFacade.fetchGogglePlaces(this.state.location);
 
-                    </tr>
+    this.setState({ goggleSearch: goggleSearchResult });
+  }
 
-                  </tbody>
-                </table>
-              </div>
-            ),
-          );
+  render() {
 
-          this.setState({ restaurantTable: restaurantArray });
-        });
-    };
+    //Table for the restaurant search.
+    const rowToGoggleSearch = this.state.goggleSearch.results && this.state.goggleSearch.results.map((restaurant) => (
+      <table className="table">
+        <thead><th>Restaurant</th><th>Rating</th></thead>
+        <tbody>
+          <tr key={restaurant.id}>
+            <td><p>{restaurant.name}</p>{restaurant.formatted_address}</td>
+            <td>Rating: {restaurant.rating}</td>
+          </tr>
+        </tbody>
+      </table>
+    ))
 
+    return (
+      <div>
 
-    render() {
-      return (
+        <form onSubmit={this.onSubmit} onChange={this.onChange} >
+          <CheckboxForFoodTypes id="3" />
+          <div id="search">
+            <input placeholder="Location" id="location" />
+            <button id="8">search</button>
+          </div>
+
+          <div className="container" />
+        </form>
+
         <div>
-
-          <form onSubmit={this.onSubmit} onChange={this.onChange} >
-            <CheckboxForFoodTypes id="3" />
-            <div id="search">
-              <input placeholder="Location" id="location" />
-              <button id="8">search</button>
-            </div>
-
-            <div className="container" />
-          </form>
-
-
-          <div>  {this.state.restaurantTable}   </div>
-
-
+          {rowToGoggleSearch}
         </div>
-      );
-    }
+
+      </div>
+    );
+  }
 
 }
 
 export default SearchGoogle;
-
