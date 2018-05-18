@@ -21,18 +21,16 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <ScrollView>
+      <View style={styles.centerHeader}>
+        <ScrollView>
+        <Text style={{ textAlign: "center", fontSize: 20 }}>Welcome to Cuisine By Choice</Text>
+          <Touchable onPress={() => navigate('Login')} title="Login" />
+          <Image source={require('./LOGO3.png')} style={styles.logo3Style} />
+       
 
-
-        <Text style={{ textAlign: "center", fontSize: 20 }}>Welcome </Text>
-        <Text style={{ textAlign: "center", fontSize: 16 }}>to Cuisine By Choice</Text>
-        <Touchable onPress={() => navigate('HomeScreen')} title="Home" />
-        {/* <Touchable onPress={() => navigate('FetchExample')} title="NetWorking" /> */}
-        <Touchable onPress={() => navigate('SearchRestaurant')} title="Search Restaurant" />
-        <Touchable onPress={() => navigate('Login')} title="Login" />
-        <Image source={require('./LOGO3.png')} style={height=undefined} />
-
-      </ScrollView>
+          <SearchRestaurant />
+        </ScrollView>
+      </View>
     )
   }
 }
@@ -40,7 +38,6 @@ export default App = () => <RouteStack style={{ marginTop: Platform.OS === 'ios'
 
 const RouteStack = StackNavigator({
   Home: { screen: HomeScreen },
-  SearchRestaurant: { screen: SearchRestaurant },
   Login: { screen: Login },
   LoggedIn: { screen: LoggedIn },
 
@@ -57,5 +54,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: 'white'
+  },
+  logo3Style: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+
+  },
+  centerHeader: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
   }
+
+
 })

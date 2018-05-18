@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Platform, Text, View, StyleSheet, Button, FlatList, TextInput, List, ListItem, ScrollView } from 'react-native';
+import { Platform, Text, View, StyleSheet, Button, TextInput, List, FlatList, ScrollView } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
-//import { List, ListItem } from "react-native-elements";
+import { ListItem } from "react-native-elements";
+
 
 
 
 // Se mere her https://docs.expo.io/versions/v27.0.0/sdk/location
 const URLGETRESTAURANTSBYCOORDINATES = 'https://benedikteeva.dk/jwtBackend%2D1.0%2DSNAPSHOT/api/googleplaces/latlgt/';
 
-class className extends Component {
+class SearchRestaurant extends Component {
 
     constructor() {
         super();
@@ -16,9 +17,7 @@ class className extends Component {
             location: null,
             errorMessage: null,
             restaurants: [],
-            restaurantTable: '',
             coordinates: '',
-            test: '',
         };
     }
 
@@ -51,21 +50,10 @@ class className extends Component {
                 return results.json();
             })
             .then((data) => {
-
                 this.setState({ restaurants: data.results })
-                // console.log("linje 52 " + this.state.restaurants.name)
-                //this.setState({ test: this.state.restaurants[1].name })
-                /*                 const restaurantsArray = (
-                             
-                
-                
-                                )
-                
-                                this.setState({ restaurantTable: restaurantsArray }) */
-
             })
-
     }
+
 
     onPressButton = (evt) => {
         if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -77,14 +65,13 @@ class className extends Component {
         }
     }
 
-
-
     render() {
         let text = 'Waiting..';
         let latitude;
         let longitude;
         let latlng;
-        // console.log("linqjqqqeqq ",this.state.restaurants[0])
+        let imageurl;
+
         if (this.state.errorMessage) {
             text = this.state.errorMessage;
         } else if (this.state.location) {
@@ -92,62 +79,46 @@ class className extends Component {
             //Get lantitude and longtitude
             latitude = this.state.location.coords.latitude;
             longitude = this.state.location.coords.longitude;
-
             //Make a new variable to our backend method based on latitude and longtitude
             latlng = latitude + "," + longitude;
 
-            //Set the data from the fetch based on latitude and longtitude in state
-            //this.setState({ restaurants: GoogleFacade.fetchRestaurantsByCoordinates(latlng) });
-
-            //Print the location object. Remove it.
-            //text2 = JSON.stringify(this.state.location);
-
-
         }
-
-        let restarantsFromFetch = this.state.restaurants;
-
-
-        if (restarantsFromFetch === undefined) {
-            var view = "null";
-        }
-        view = this.state.restaurantTable
-
-
+ 
+        console.log(imageurl)
         return (
-            <View style={styles.container} >
-                <ScrollView  >
-                    <Text>{this.state.test}</Text>
-                    <Text>Search for a restaurant based on your location</Text>
-                    <Text> {this.state.test}</Text>
 
-                    <TextInput style={styles.inputField} placeholder="Does not work."
-                        multiline={true}
-                        numberOfLines={1}
-                    />
+            <ScrollView>
+                <Text>Search for a restaurant based on your location</Text>
 
-                    <Button
-                        onPress={() => this.onPressButton()}
-                        title="Gps location"
-                    />
+                <Button
+                    color='green'
+                    style={styles.button}
+                    onPress={() => this.onPressButton()}
+                    title="Gps location"
+                />
 
-                    <FlatList
-                        data={this.state.restaurants}
-                        renderItem={({ item }) => <Text>{item.name}</Text>}
-                    />
+                <Text style={styles.paragraph}>Longtitude and Longtitude: {latlng}</Text>
+                <FlatList
+                    data={this.state.restaurants}
+                    renderItem={({ item }) => (
+                        <ListItem
+                            roundAvatar
+                            title={item.name}
+                            subtitle={item.vicinity}
+                            rightTitle={item.rating}
+                          //  avatar={{ uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${item.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM` }}
+                        avatar= {require('./LOGO3.png')}
+                        />
+                    )}
+                />
 
-                    <Text style={styles.paragraph}>{text}</Text>
-                    <Text style={styles.paragraph}>Latitude: {latitude}</Text>
-                    <Text style={styles.paragraph}>Longtitude: {longitude}</Text>
-                    <Text style={styles.paragraph}>Longtitude and Longtitude: {latlng}</Text>
+            </ScrollView>
 
-                </ScrollView>
-            </View>
         );
     }
 }
 
-export default className;
+export default SearchRestaurant;
 
 const styles = StyleSheet.create({
     container: {
@@ -167,28 +138,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: 110,
     },
+    button: {
+        margin: 3,
+        alignItems: 'center',
+        backgroundColor: 'green',
+
+    },
 });
-
-//https://rationalappdev.com/react-native-list-app-complete-how-to-guide/#outline-list-component-class
-
-// https://medium.com/react-native-development/how-to-use-the-flatlist-component-react-native-basics-92c482816fe6
-{/* <List>
-                    <FlatList
-                        data={this.state.restaurants}
-                            renderItem={({ restaurant }) => (
-                            <ListItem
-                                roundAvatar
-                                title={`${restaurant.name} ${restaurant.formatted_address}`}
-                                subtitle={restaurant.formatted_address}
-                                avatar={{ uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${restaurant.photos[0].photo_reference}&key=AIzaSyDNGntL1NjT4xTfiMxnq2Blu6M5yjfPmMM` }}
-                            />
-                        )}
-                    />
-                </List>
- */}
-
-/*  <FlatList
-                    data={this.state.restaurants}
-                    renderItem={({ restaurant }) => <Text>{restaurant.name}, {restaurant.formatted_address}</Text>}
-                    keyExtractor={(restaurant, index) => index}
-                /> */
