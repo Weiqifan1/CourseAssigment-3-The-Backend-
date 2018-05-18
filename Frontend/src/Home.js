@@ -18,7 +18,7 @@ class Home extends Component {
         <hr id="line2" />
         <h6>Autocomplete</h6>
         <LocationSearchInput />
-        {/* <SearchGoogleDropDown/> */}
+         {/* <SearchGoogleDropDown/>  */}
         <LoginAs />
 
       </div>
