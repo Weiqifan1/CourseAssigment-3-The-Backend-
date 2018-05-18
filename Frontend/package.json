@@ -2,7 +2,7 @@
   "name": "cuisinebychoice",
   "version": "0.1.0",
   "private": false,
-
+  "homepage": "https://weiqifan1.github.io/sem3pro/Frontend/",
   "dependencies": {
     "amber": "^0.21.1",
     "bootstrap": "^4.1.0",
