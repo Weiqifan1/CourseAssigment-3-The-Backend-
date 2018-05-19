@@ -1,0 +1,97 @@
+
+{
+    "users": [
+        
+        {
+            "id": "1",
+            "userName": "user",
+            "userRole": "user",
+            "email": "user@user.dk",
+            "password": "test",
+            "search": ["cafe woody"],
+            "checkins": ["cafewoody"],
+            "venuehistory": ["cafewoody"],
+            "venuelikes": ["cafewoody"],
+            "review": "Lorem ipsum dolor sit amet."
+          },
+        
+          {
+            "id": "2",
+            "userName": "John Doe",
+            "userRole": "user",
+            "email": "jd@live.com",
+            "password": "test",
+            "search": ["cafe woody", "McDonalds", "Raadvad Kro", "Lyngby", "søborg"],
+            "checkins": ["cafewoody", "McDonalds", "RaadvadKro", "Hardrock Cafe"],
+            "venuehistory": ["cafewoody", "McDonalds", "RaadvadKro"],
+            "venuelikes": ["cafewoody", "RaadvadKro"],
+            "review": "Lorem ipsum dolor sit amet."
+          },
+        
+          {
+            "id": "3",
+            "userName": "James Dean",
+            "userRole": "user",
+            "email": "jamesdean@jd.us",
+            "password": "test",
+            "search": ["Hardrock Cafe", "Kentucky Friend Chicken", "Effes Pizza"],
+            "checkins": ["Hardrock Cafe", "Effes Pizza"],
+            "venuehistory": ["Hardrock Cafe", "Effes Pizza"],
+            "venuelikes": ["Hardrock Cafe", "Effes Pizza"],
+            "review": "Ut enim ad minim veniam, quis nostrud exercitation."
+          },
+        
+          {
+            "id": "4",
+            "userName": "Sally HeartField",
+            "userRole": "user",
+            "email": "sally@hotmail.com",
+            "password": "test",
+            "search": ["cafe ruccula", "Noma", "Cafe Petrine", "Lyngby", "københavn"],
+            "checkins": ["cafe ruccula", "Noma"],
+            "venuehistory": ["cafe rucculay", "Noma"],
+            "venuelikes": ["cafe ruccula"],
+            "review": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          },
+        
+          {
+            "id": "5",
+            "userName": "Al Pacino",
+            "userRole": "user",
+            "email": "al@pacino.com",
+            "password": "test",
+            "search": ["tante maren", "McDonalds", "RaadvadKro", "Lyngby", "Cafeer", "Brdr. Ox"],
+            "checkins": ["cafewoody", "McDonalds", "RaadvadKro"],
+            "venuehistory": ["cafewoody", "McDonalds", "RaadvadKro"],
+            "venuelikes": ["cafewoody", "RaadvadKro", "RaadvadKro", "Brdr. Ox"],
+            "review": "Excepteur sint."
+          },
+        
+          {
+            "id": "6",
+            "userName": "Andersine And",
+            "userRole": "user",
+            "email": "andersine@gmail.com",
+            "password": "test",
+            "search": ["Geranium", "Krebsgaarden", "restaurant amalie"],
+            "checkins": ["Geranium"],
+            "venuehistory": ["Geranium"],
+            "venuelikes": [],
+            "review": ""
+          },
+        
+          {
+            "id": "7",
+            "userName": "admin",
+            "userRole": "admin",
+            "email": "admin@amin.dk",
+            "password": "test",
+            "search": ["cafe woody"],
+            "checkins": ["cafewoody"],
+            "venuehistory": ["cafewoody"],
+            "venuelikes": ["cafewoody"],
+            "review": "Lorem ipsum dolor sit amet."
+          }
+
+    ]
+}
